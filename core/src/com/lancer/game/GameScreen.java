@@ -23,8 +23,10 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+
         batch = new SpriteBatch();
         currentRoom = new Room<GameObject>();
+        currentRoom.add(new TestObject());
         Gdx.app.log("Screen","Show");
     }
 

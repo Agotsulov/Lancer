@@ -13,7 +13,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_6">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
     <exclude-output />
@@ -28,10 +28,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" exported="" />
-    <orderEntry type="library" exported="" name="gdx-backend-gwt-1.9.6" level="project" />
-    <orderEntry type="library" exported="" name="gdx-backend-gwt-1.9.6-sources" level="project" />
-    <orderEntry type="library" exported="" name="gdx-1.9.6-sources" level="project" />
-    <orderEntry type="library" exported="" name="gdx-1.9.6" level="project" />
+    <orderEntry type="library" exported="" name="gdx-backend-gwt-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="gdx-backend-gwt-1.9.7-sources" level="project" />
+    <orderEntry type="library" exported="" name="gdx-1.9.7-sources" level="project" />
+    <orderEntry type="library" exported="" name="gdx-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="gdx-box2d-1.9.7-sources" level="project" />
+    <orderEntry type="library" exported="" name="gdx-box2d-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="gdx-box2d-gwt-1.9.7-sources" level="project" />
     <orderEntry type="library" exported="" name="gwt-user-2.8.0" level="project" />
     <orderEntry type="library" exported="" name="jsinterop-annotations-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="jsinterop-annotations-1.0.1-sources" level="project" />

@@ -13,7 +13,7 @@
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7" inherit-compiler-output="false">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
     <output url="file://$MODULE_DIR$/build/classes/main" />
     <output-test url="file://$MODULE_DIR$/build/classes/test" />
     <exclude-output />
@@ -28,11 +28,13 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="core" exported="" />
-    <orderEntry type="library" exported="" name="robovm-rt-2.3.0" level="project" />
-    <orderEntry type="library" exported="" name="robovm-cocoatouch-2.3.0" level="project" />
-    <orderEntry type="library" exported="" name="gdx-backend-robovm-1.9.6" level="project" />
-    <orderEntry type="library" exported="" name="gdx-platform-1.9.6-natives-ios" level="project" />
-    <orderEntry type="library" exported="" name="gdx-1.9.6" level="project" />
-    <orderEntry type="library" exported="" name="robovm-objc-2.3.0" level="project" />
+    <orderEntry type="library" exported="" name="gdx-backend-robovm-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="gdx-platform-1.9.7-natives-ios" level="project" />
+    <orderEntry type="library" exported="" name="gdx-box2d-platform-1.9.7-natives-ios" level="project" />
+    <orderEntry type="library" exported="" name="gdx-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="gdx-box2d-1.9.7" level="project" />
+    <orderEntry type="library" exported="" name="robovm-cocoatouch-2.3.3" level="project" />
+    <orderEntry type="library" exported="" name="robovm-objc-2.3.3" level="project" />
+    <orderEntry type="library" exported="" name="robovm-rt-2.3.3" level="project" />
   </component>
 </module>
