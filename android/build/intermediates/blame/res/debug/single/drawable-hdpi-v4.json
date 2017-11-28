@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/home/byzilio/Workspace/libGDX/lancer/android/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/home/byzilio/Workspace/libGDX/lancer/android/res/drawable-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/home/byzilio/Workspace/libGDX/Lancer/android/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_launcher.png",
+        "source": "/home/byzilio/Workspace/libGDX/Lancer/android/res/drawable-hdpi/ic_launcher.png"
+    }
+]
