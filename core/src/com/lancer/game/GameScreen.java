@@ -4,6 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.lancer.game.helper.Pair;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by byzilio on 28.11.17.
@@ -17,16 +21,16 @@ public class GameScreen implements Screen {
 
     SpriteBatch batch;
 
-    public Room<GameObject> currentRoom;
-    public Room<GameObject> map[][];
+    public Room curRoom;
+    public Room map[][];
 
 
     @Override
     public void show() {
 
         batch = new SpriteBatch();
-        currentRoom = new Room<GameObject>();
-        currentRoom.add(new TestObject());
+        curRoom = new Room();
+        //curRoom.add(new TestObject());
         Gdx.app.log("Screen","Show");
     }
 
@@ -38,16 +42,50 @@ public class GameScreen implements Screen {
     }
 
     public void update(){
-        // for(int i = 0;i < currentRoom.objects.size();i++){
-        //  currentRoom.objects.get(i).update();
+        List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
+
+        for(int i = 0; i < curRoom.size(); i++){
+            curRoom.get(i).update();
+        }
+
+        for(int i = 0; i < curRoom.size(); i++){
+            curRoom.get(i).moveX();
+        }
+        for(int i = 0; i < curRoom.size(); i++){
+            GameObject current = curRoom.get(i);
+            for(int j = 0; j < curRoom.size(); j++){
+                if(i != j)
+                    if(current.overlaps(curRoom.get(j))){
+                        encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
+                        current.repel(curRoom.get(j));
+                    }
+            }
+        }
+
+
+        for(int i = 0; i < curRoom.size(); i++){
+            curRoom.get(i).moveY();
+        }
+        for(int i = 0; i < curRoom.size(); i++){
+            GameObject current = curRoom.get(i);
+            for(int j = 0; j < curRoom.size(); j++){
+                if(i != j)
+                    if(current.overlaps(curRoom.get(j))){
+                        encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
+                        current.repel(curRoom.get(j));
+                    }
+            }
+        }
+
+
+        for(int i = 0; i < encountered.size(); i++){
+            encountered.get(i).getFirst().collide(encountered.get(i).getSecond());
+            encountered.get(i).getSecond().collide(encountered.get(i).getFirst());
+        }
+
+
     }
 
-    // for(int i = 0;i < currentRoom.objects.size();i++){
-    // for(int j = 0;j < currentRoom.objects.get(i).collidable.size();j++){
-    //  currentRoom.objects.get(i).collide(currentRoom.objects.get(i).collidable.get(j));
-    //   }
-    // }
-    // }
 
 
     public void draw() {
@@ -55,8 +93,8 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
-        for (int i = 0; i < currentRoom.size(); i++) {
-            currentRoom.get(i).draw(batch);
+        for (int i = 0; i < curRoom.size(); i++) {
+            curRoom.get(i).draw(batch);
         }
         batch.end();
     }

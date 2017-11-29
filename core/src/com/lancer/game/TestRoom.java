@@ -5,6 +5,7 @@ package com.lancer.game;
  */
 
 class TestRoom extends Room {
-    public TestRoom(GameScreen gameScreen) {
+    public TestRoom() {
+        add(new TestObject());
     }
 }
