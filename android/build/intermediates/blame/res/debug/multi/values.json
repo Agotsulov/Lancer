@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "B:\\loid\\test2\\Lancer\\android\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "/home/byzilio/Workspace/libGDX/La/Lancer/android/build/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
         "map": [
             {
                 "to": {
@@ -11,52 +11,7 @@
                     "endOffset": 94
                 },
                 "from": {
-                    "file": "B:\\loid\\test2\\Lancer\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 59,
-                        "endColumn": 43,
-                        "endOffset": 98
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 99,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 557
-                },
-                "from": {
-                    "file": "B:\\loid\\test2\\Lancer\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 19,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 484
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "B:\\home\\byzilio\\Workspace\\libGDX\\Lancer\\android\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 43,
-                    "endOffset": 94
-                },
-                "from": {
-                    "file": "B:\\home\\byzilio\\Workspace\\libGDX\\Lancer\\android\\res\\values\\strings.xml",
+                    "file": "/home/byzilio/Workspace/libGDX/La/Lancer/android/res/values/strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -76,52 +31,7 @@
                     "endOffset": 557
                 },
                 "from": {
-                    "file": "B:\\home\\byzilio\\Workspace\\libGDX\\Lancer\\android\\res\\values\\styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 17,
-                        "endLine": 9,
-                        "endColumn": 12,
-                        "endOffset": 475
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "B:\\home\\byzilio\\Workspace\\libGDX\\lancer\\android\\build\\intermediates\\res\\merged\\debug\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 55,
-                    "endColumn": 43,
-                    "endOffset": 94
-                },
-                "from": {
-                    "file": "B:\\home\\byzilio\\Workspace\\libGDX\\lancer\\android\\res\\values\\strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 56,
-                        "endColumn": 43,
-                        "endOffset": 95
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 99,
-                    "endLine": 10,
-                    "endColumn": 12,
-                    "endOffset": 557
-                },
-                "from": {
-                    "file": "B:\\home\\byzilio\\Workspace\\libGDX\\lancer\\android\\res\\values\\styles.xml",
+                    "file": "/home/byzilio/Workspace/libGDX/La/Lancer/android/res/values/styles.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
