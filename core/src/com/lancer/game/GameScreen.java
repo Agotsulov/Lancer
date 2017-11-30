@@ -57,12 +57,13 @@ public class GameScreen implements Screen {
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
-                if(i != j)
+                if(i != j){
+                    Gdx.app.log("CollAfterX","" + i + " " + j);
                     if(current.overlaps(curRoom.get(j))){
-                        Gdx.app.log("sos","");
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
                         current.repel(curRoom.get(j));
                     }
+                }
             }
         }
 
@@ -73,11 +74,13 @@ public class GameScreen implements Screen {
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
-                if(i != j)
-                    if(current.overlaps(curRoom.get(j))){
-                        encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
+                if(i != j) {
+                    Gdx.app.log("CollAfterY", "" + i + " " + j);
+                    if (current.overlaps(curRoom.get(j))) {
+                        encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
                         current.repel(curRoom.get(j));
                     }
+                }
             }
         }
 

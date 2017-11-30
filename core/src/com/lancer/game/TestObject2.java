@@ -5,31 +5,26 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
- * Created by byzilio on 28.11.17.
+ * Created by byzilio on 30.11.17.
  */
 
-public class TestObject extends GameObject {
+public class TestObject2 extends GameObject {
     Texture texture;
 
-    public TestObject(){
-        super(0,0,130,120);
-        texture = new Texture("badlogic.jpg");
-        name = "A";
-    }
-    public TestObject(float x,float y,float width,float height){
-        super(x,y,width,height);
-        texture = new Texture("badlogic.jpg");
-        name = "A";
 
+    public TestObject2(float x, float y, float width, float height) {
+        super(x, y, width, height);
+        texture = new Texture("badlogic.jpg");
+        name = "B";
     }
 
 
-    public TestObject(float x,float y,float width,float height,String name){
-        super(x,y,width,height);
+    public TestObject2(float x, float y, float width, float height,String name) {
+        super(x, y, width, height);
         texture = new Texture("badlogic.jpg");
         this.name = name;
     }
-    @Override
+
     public void update() {
         Gdx.app.log("TestObject","update");
     }
@@ -41,6 +36,6 @@ public class TestObject extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-    Gdx.app.log("12","");
+        Gdx.app.log("21","");
     }
 }
