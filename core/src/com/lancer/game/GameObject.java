@@ -5,6 +5,7 @@ package com.lancer.game;
  */
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -48,6 +49,48 @@ public abstract class GameObject {
         y += dir.y * speed;
     }
 
+    public boolean overlaps(GameObject another){
+        //Сталкновение обектов вернуть true
+        if(this.x >=another.x && this.x<=another.x+another.width && this.y>=another.y && this.y<=another.y+another.height){
+            Gdx.app.log("collision:x"," 1");
+            return true;
+        }
+        if(this.x+this.width>=another.x && this.x+this.width<=another.x+another.width && this.y>=another.y && this.y<=another.y+another.height){
+            Gdx.app.log("collision:x"," 2");
+            return true;
+        }
+        if(this.y>=another.y && this.y<=another.y+another.height && this.x>another.x && this.x<=another.x+another.width){
+            Gdx.app.log("collision:y"," 1");
+            return true;
+        }
+        if(this.y+this.height>=another.y && this.y+this.height<=another.y+another.height && this.x>another.x && this.x<=another.x+another.width){
+            Gdx.app.log("collision:y"," 2");
+            return true;
+        }
+        if(this.y<=another.y && this.y+this.height>=another.y+another.height && this.x>another.x && this.x<=another.x+another.width){
+            return true;
+        }
+        /*
+        Типо такого
+        if((x1+1>=x2) && (x1+1<=x2+w2) && (y1+1>=y2) && (y1+1<=y2+h2)) {
+            return true;
+        }
+        if((x1+1+w1-2>=x2) && (x1+1+w1-2<=x2+w2) && (y1+1>=y2) && (y1+1<=y2+h2)) {
+            return true;
+        }
+        if((x1+1>=x2) && (x1+1<=x2+w2) && (y1+1+h1-2>=y2) && (y1+1+h1-2<=y2+h2)) {
+            return true;
+        }
+        if((x1+1+w1-2>=x2) && (x1+1+w1-2<=x2+w2) && (y1+1+h1-2>=y2) && (y1+1+h1-2<=y2+h2)) {
+            return true;
+        }
+
+        if((x1+1>=x2) && (x1+1<=x2+w2) && (y2>=y1+1) && (y2<=y1+1+h1-2)) {
+            return true;
+        }
+         */
+        return false;
+    }
 
     public void repel(GameObject another){
         //Оталкивает этот обьект от другого если нужно
@@ -73,32 +116,10 @@ public abstract class GameObject {
                     }
                 }
          */
+
     }
 
-    public boolean overlaps(GameObject another){
-        //Сталкновение обектов вернуть true
 
-        /*
-        Типо такого
-        if((x1+1>=x2) && (x1+1<=x2+w2) && (y1+1>=y2) && (y1+1<=y2+h2)) {
-            return true;
-        }
-        if((x1+1+w1-2>=x2) && (x1+1+w1-2<=x2+w2) && (y1+1>=y2) && (y1+1<=y2+h2)) {
-            return true;
-        }
-        if((x1+1>=x2) && (x1+1<=x2+w2) && (y1+1+h1-2>=y2) && (y1+1+h1-2<=y2+h2)) {
-            return true;
-        }
-        if((x1+1+w1-2>=x2) && (x1+1+w1-2<=x2+w2) && (y1+1+h1-2>=y2) && (y1+1+h1-2<=y2+h2)) {
-            return true;
-        }
-
-        if((x1+1>=x2) && (x1+1<=x2+w2) && (y2>=y1+1) && (y2<=y1+1+h1-2)) {
-            return true;
-        }
-         */
-        return false;
-    }
 
     public abstract void draw(SpriteBatch batch);
 

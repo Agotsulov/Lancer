@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Room extends ArrayList<GameObject> {
 
     public Room(){
-        add( new TestObject());
+        //add( new TestObject());
 
     }
 

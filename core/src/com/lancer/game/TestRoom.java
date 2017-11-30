@@ -6,6 +6,9 @@ package com.lancer.game;
 
 class TestRoom extends Room {
     public TestRoom() {
-        add(new TestObject());
+        add(new TestObject(200.f,0.f,120.f,130.f));
+        add(new TestObject(220.f,120.f,120.f,130.f));
+
     }
+
 }

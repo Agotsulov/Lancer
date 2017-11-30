@@ -29,7 +29,7 @@ public class GameScreen implements Screen {
     public void show() {
 
         batch = new SpriteBatch();
-        curRoom = new Room();
+        curRoom = new TestRoom();
         //curRoom.add(new TestObject());
         Gdx.app.log("Screen","Show");
     }
@@ -40,7 +40,10 @@ public class GameScreen implements Screen {
         update();
         draw();
     }
+    public void test()
+    {
 
+    }
     public void update(){
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
@@ -56,6 +59,7 @@ public class GameScreen implements Screen {
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j)
                     if(current.overlaps(curRoom.get(j))){
+                        Gdx.app.log("sos","");
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
                         current.repel(curRoom.get(j));
                     }
