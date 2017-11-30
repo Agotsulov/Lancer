@@ -85,7 +85,7 @@ public abstract class GameObject {
         }
 
         //if((x1+1>=x2) && (x1+1<=x2+w2) && (y2>=y1+1) && (y2<=y1+1+h1-2)) {
-        if(x1<=x2 && x1<=x2+width2 && y2>=y1 && y2<=y1+height1){
+        if(x1>=x2 && x1<=x2+width2 && y2>=y1 && y2<=y1+height1){
             Gdx.app.log("collision:z"," " + this.name + " " +another.name);
             return true;
         }
