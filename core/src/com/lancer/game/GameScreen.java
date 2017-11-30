@@ -20,13 +20,15 @@ public class GameScreen implements Screen {
     public int seed;
 
     SpriteBatch batch;
-
+    int Touch_x;
+    int Touch_y;
     public Room curRoom;
     public Room map[][];
 
 
     @Override
     public void show() {
+
 
         batch = new SpriteBatch();
         curRoom = new TestRoom();
@@ -36,7 +38,9 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
         Gdx.app.log("Screen","Render");
+        
         update();
         draw();
     }
@@ -45,6 +49,8 @@ public class GameScreen implements Screen {
 
     }
     public void update(){
+        Touch_x=Gdx.input.getX();
+        Touch_y=Gdx.input.getY();
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
