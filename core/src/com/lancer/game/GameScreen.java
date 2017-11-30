@@ -61,7 +61,7 @@ public class GameScreen implements Screen {
                     Gdx.app.log("CollAfterX","" + i + " " + j);
                     if(current.overlaps(curRoom.get(j))){
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
-                        current.repel(curRoom.get(j));
+                        current.repelx(curRoom.get(j));
                     }
                 }
             }
@@ -78,7 +78,7 @@ public class GameScreen implements Screen {
                     Gdx.app.log("CollAfterY", "" + i + " " + j);
                     if (current.overlaps(curRoom.get(j))) {
                         encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
-                        current.repel(curRoom.get(j));
+                        current.repely(curRoom.get(j));
                     }
                 }
             }

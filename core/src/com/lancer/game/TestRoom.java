@@ -1,5 +1,7 @@
 package com.lancer.game;
 
+import com.badlogic.gdx.math.Vector2;
+
 /**
  * Created by byzilio on 28.11.17.
  */
@@ -17,10 +19,10 @@ class TestRoom extends Room {
 
         //add(new TestObject(300,300,100,100,"A3"));
         //add(new TestObject2(290,290,100,100,"B3"));
-
-        add(new TestObject(300,300,100,100,"A4"));
-        add(new TestObject2(325,250,50,200,"B4"));
-
+        TestObject t=new TestObject(0,0,50,50,"B4");
+        add(new TestObject(300,200,100,100,"A4"));
+        add(t);
+        t.dir=new Vector2(1,1);
     }
 
 }

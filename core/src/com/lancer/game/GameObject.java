@@ -23,7 +23,11 @@ public abstract class GameObject {
     public String name;
     public String tag;
     public int layer;
-
+    public int contact=0;
+    public final int UP=1;
+    public final int RIGHT=2;
+    public final int DOWN=3;
+    public final int LEFT=4;
     public GameObject(float x, float y, float width, float height) {
         this.x = x;
         this.y = y;
@@ -35,6 +39,7 @@ public abstract class GameObject {
         dir = new Vector2(0,0);
         speed = 1.f;
         isSolid = true;
+
     }
 
     public abstract void update();
@@ -51,28 +56,36 @@ public abstract class GameObject {
 
     public boolean overlaps(GameObject another){
         //Сталкновение обектов вернуть true
-        if(this.x >=another.x && this.x<=another.x+another.width && this.y>=another.y && this.y<=another.y+another.height){
+        float x1=this.x+1;
+        float x2=another.x+1;
+        float y1=this.y+1;
+        float y2=another.y+1;
+        float width1=this.width-2;
+        float width2=another.width;
+        float height1=this.height-2;
+        float height2=another.height;
+        if(x1 >=x2 && x1<=x2+width2 && y1>=y2 && y1<=y2+height2){
             Gdx.app.log("collision:x1"," " + this.name + " " +another.name);
             return true;
         }
-        if(this.x+this.width>=another.x && this.x+this.width<=another.x+another.width && this.y>=another.y && this.y<=another.y+another.height){
+        if(x1+width1>=x2 && x1+width1<=x2+width2 && y1>=y2 && y1<=y2+height2){
             Gdx.app.log("collision:x2"," " + this.name + " " +another.name);
             return true;
         }
 
-        if(this.x>=another.x  && this.x<=another.x + another.width && this.y + this.height >= another.y && this.y + this.height <= another.y + another.height){
+        if(x1>=x2 && x1<=x2 + width2 && y1 + height1 >= y2 && y1 +height1 <= y2 + height2){
             Gdx.app.log("collision:y1"," " + this.name + " " +another.name);
             return true;
         }
         //if((x1+1+w1-2>=x2) && (x1+1+w1-2<=x2+w2) && (y1+1+h1-2>=y2) && (y1+1+h1-2<=y2+h2)) {
 
-        if(this.x + this.width>=another.x && this.x+this.width<=another.x+another.width && this.y + this.height>=another.y && this.y + this.height <= another.y+another.height){
+        if(x1 + width1>=x2 && x1+width1<=x2+width2 && y1 + height1>=y2 && y1 + height1 <= y2+height2){
             Gdx.app.log("collision:y2"," " + this.name + " " +another.name);
             return true;
         }
 
         //if((x1+1>=x2) && (x1+1<=x2+w2) && (y2>=y1+1) && (y2<=y1+1+h1-2)) {
-        if(this.x<=another.x && this.x<=another.x+another.width && another.y>=this.y && another.y<=this.x+this.width){
+        if(x1<=x2 && x1<=x2+width2 && y2>=y1 && y2<=y1+height1){
             Gdx.app.log("collision:z"," " + this.name + " " +another.name);
             return true;
         }
@@ -99,7 +112,53 @@ public abstract class GameObject {
         return false;
     }
 
-    public void repel(GameObject another){
+    public void repelx(GameObject another){
+        if (isSolid == true && another.isSolid==true) {
+            if (dir.x > 0) {
+                x = another.x - width;
+                contact = LEFT;
+            }
+            if (dir.x < 0) {
+                x = another.x + another.width;
+                contact = RIGHT;
+            }
+            //Оталкивает этот обьект от другого если нужно
+        /*
+        Типо
+        ux скорость
+        для y аналгично
+        contact это int для знания где столкнулись чтобы прыграть например
+                    if(ux > 0.0f) {
+                        x = checkable.x - width;
+                        contact = LEFT;
+                    }
+                    if(ux < 0.0f) {
+                        x = checkable.x + checkable.width;
+                        contact = RIGHT;
+                    }
+                } else {
+                    if(ux > 0.0f) {
+                        contact = LEFT;
+                    }
+                    if(ux < 0.0f) {
+                        contact = RIGHT;
+                    }
+                }
+         */
+        }
+    }
+    public void repely(GameObject another) {
+        if (isSolid == true && another.isSolid==true) {
+            if (dir.y > 0) {
+                contact = DOWN;
+                y = another.y - height;
+            }
+            if (dir.y < 0) {
+                y = another.y + another.height;
+                contact = UP;
+            }
+        }
+    }
         //Оталкивает этот обьект от другого если нужно
         /*
         Типо
@@ -124,7 +183,7 @@ public abstract class GameObject {
                 }
          */
 
-    }
+
 
 
 
