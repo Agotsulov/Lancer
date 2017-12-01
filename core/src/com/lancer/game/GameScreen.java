@@ -92,9 +92,15 @@ public class GameScreen implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
 
+        for (int j = 0; j < 10; j++) {
+            for (int i = 0; i < curRoom.layers[j].size(); i++) {
+                curRoom.layers[j].get(i).draw(batch);
+            }
+        }/*
         for (int i = 0; i < curRoom.size(); i++) {
             curRoom.get(i).draw(batch);
         }
+        */
         batch.end();
     }
     public Room[][] generate(int seed){

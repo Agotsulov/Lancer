@@ -45,7 +45,7 @@ public abstract class GameObject {
         isSolid = true;
         a = new Vector2(0,0);
         maxVelocity = 10f;
-        mass = 0.7f;
+        mass = 0.4f;
     }
 
 
