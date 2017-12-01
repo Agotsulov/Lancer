@@ -20,37 +20,23 @@ public class GameScreen implements Screen {
     public int seed;
 
     SpriteBatch batch;
-    int Touch_x;
-    int Touch_y;
+
     public Room curRoom;
     public Room map[][];
 
-
     @Override
     public void show() {
-
-
         batch = new SpriteBatch();
         curRoom = new TestRoom();
-        //curRoom.add(new TestObject());
-        Gdx.app.log("Screen","Show");
     }
 
     @Override
     public void render(float delta) {
-
-        Gdx.app.log("Screen","Render");
-        
         update();
         draw();
     }
-    public void test()
-    {
 
-    }
     public void update(){
-        Touch_x=Gdx.input.getX();
-        Touch_y=Gdx.input.getY();
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
@@ -67,7 +53,7 @@ public class GameScreen implements Screen {
                     Gdx.app.log("CollAfterX","" + i + " " + j);
                     if(current.overlaps(curRoom.get(j))){
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
-                        current.repelx(curRoom.get(j));
+                        current.repelX(curRoom.get(j));
                     }
                 }
             }
@@ -84,7 +70,7 @@ public class GameScreen implements Screen {
                     Gdx.app.log("CollAfterY", "" + i + " " + j);
                     if (current.overlaps(curRoom.get(j))) {
                         encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
-                        current.repely(curRoom.get(j));
+                        current.repelY(curRoom.get(j));
                     }
                 }
             }

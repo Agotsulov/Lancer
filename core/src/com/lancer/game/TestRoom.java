@@ -19,10 +19,10 @@ class TestRoom extends Room {
 
         //add(new TestObject(300,300,100,100,"A3"));
         //add(new TestObject2(290,290,100,100,"B3"));
-        TestObject t=new TestObject(0,0,50,50,"B4");
-        add(new TestObject(300,200,100,100,"A4"));
+        TestObject t=new TestObject(200,0,50,50,"B4");
+        add(new TestObject(200,300,100,100,"A4"));
         add(t);
-        t.dir=new Vector2(0.5f,0.5f);
+        t.addForce(new Vector2(0f,100f));
     }
 
 }
