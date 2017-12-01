@@ -55,9 +55,7 @@ public abstract class GameObject {
 
     public void moveX(){
         u.add(a);
-        Gdx.app.log("GameObject","u = " + u);
-        Gdx.app.log("GameObject","u.len = " + u.len());
-        Gdx.app.log("GameObject","a = " + a);
+
         if(u.len() > maxVelocity){
             u.setLength(maxVelocity);
         }
@@ -67,12 +65,12 @@ public abstract class GameObject {
     public void moveY(){
         y += u.y;
         if((a.len() == 0) && (u.len() != 0)){
-            Gdx.app.log("GameObject","BEFORE u - mass = " + (u.len() - mass));
+
             if((u.len() > 0) && (u.len() - mass > 0)){
-                Gdx.app.log("GameObject","u - mass = " + (u.len() - mass));
+
                 u.setLength(u.len() - mass);
             } else u.setLength(0);
-            Gdx.app.log("GameObject","AFTER u = " + u);
+
 
         }
     }

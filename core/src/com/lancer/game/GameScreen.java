@@ -4,7 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.helper.Pair;
+import com.lancer.game.helper.Touch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.List;
  * Created by byzilio on 28.11.17.
  */
 
-public class GameScreen implements Screen {
+public class GameScreen  implements Screen{
 
     public static float scale = 1.f;
 
@@ -32,11 +35,14 @@ public class GameScreen implements Screen {
 
     @Override
     public void render(float delta) {
+
         update();
         draw();
     }
 
     public void update(){
+
+
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
@@ -50,7 +56,7 @@ public class GameScreen implements Screen {
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j){
-                    Gdx.app.log("CollAfterX","" + i + " " + j);
+
                     if(current.overlaps(curRoom.get(j))){
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
                         current.repelX(curRoom.get(j));
@@ -67,7 +73,7 @@ public class GameScreen implements Screen {
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j) {
-                    Gdx.app.log("CollAfterY", "" + i + " " + j);
+                
                     if (current.overlaps(curRoom.get(j))) {
                         encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
                         current.repelY(curRoom.get(j));
@@ -131,4 +137,6 @@ public class GameScreen implements Screen {
     public void dispose () {
         batch.dispose();
     }
+
+
 }
