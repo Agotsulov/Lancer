@@ -34,9 +34,10 @@ public class Fireball extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-        if(another.tag == "Entity"){
+        if(another.tag == "Entity" ){
             Entity e = (Entity) another;
             e.health -= damage;
+            this.dispose();
         }
     }
 

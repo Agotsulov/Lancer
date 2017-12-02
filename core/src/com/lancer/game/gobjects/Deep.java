@@ -6,16 +6,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lancer.game.GameObject;
 
 /**
- * Created by byzilio on 03.12.17.
+ * Created by zope on 03.12.2017.
  */
 
-public class SpeckFire extends GameObject {
-
+public class Deep extends GameObject{
     Texture texture;
 
-    public SpeckFire(float x,float y,float w,float h){
+    public Deep(float x,float y,float w,float h){
         super(x,y,w,h);
-        texture = new Texture("speckFire.png");
+        texture = new Texture("deep.png");
         layer = 1;
     }
 
@@ -28,12 +27,9 @@ public class SpeckFire extends GameObject {
     public void collide(GameObject another) {
         if(another.name == "Player"){
             Player p = ((Player)another);
-           // Gdx.app.log("SpeckFire","++");
-            if(p.red < p.maxRed){
-                p.red++;
-                isAlive = false;
-                p.room.remove(this);
-            }
+            Gdx.app.log("You are DIE","");
+           p.isAlive=false;
+           p.room.remove(p);
         }
     }
 }

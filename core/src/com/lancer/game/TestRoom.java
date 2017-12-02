@@ -2,6 +2,9 @@ package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
 import com.lancer.game.GameObjects.Block;
+import com.lancer.game.gobjects.Blue;
+import com.lancer.game.gobjects.Deep;
+import com.lancer.game.gobjects.Fireblock;
 import com.lancer.game.gobjects.Player;
 import com.lancer.game.GameObjects.Spikes;
 import com.lancer.game.gobjects.SpeckFire;
@@ -45,14 +48,18 @@ class TestRoom extends Room {
 
         collide(p,b);
 
-        Spikes s = new Spikes(350,130,100,100);
-
+        Deep s= new Deep(350,130,100,100);
+        Fireblock s1= new Fireblock(460,130,100,100);
+        Blue s2= new Blue(570,130,100,100);
         add(b);
         add(p);
 
         overlap(p,s);
         add(s);
-
+        overlap(p,s1);
+        add(s1);
+        overlap(p,s2);
+        add(s2);
 
         List<GameObject> fs = new ArrayList<GameObject>();
         for(int i = 0;i < 5;i++){

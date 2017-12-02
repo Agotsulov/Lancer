@@ -13,7 +13,7 @@ import com.lancer.game.gobjects.sticks.MoveStick;
  * Created by byzilio on 02.12.17.
  */
 
-public class Player extends Entity {
+public class Player extends GameObject{
 
     public Stick moveStick;
     public Stick fireStick;
@@ -29,9 +29,9 @@ public class Player extends Entity {
     public int maxBlue = 10;
 
     Texture texture;
-
+    public int godtime;
     BitmapFont font = new BitmapFont();
-
+    int health;
     public Player(Room room) {
         super();
         this.room = room;
@@ -40,11 +40,12 @@ public class Player extends Entity {
         y = 300;
         width = 50;
         height = 50;
+        godtime=0;
         name = "Player";
         texture = new Texture("player.png");
         maxVelocity = 2;
         layer = 3;
-        health = 100;
+        health=100;
         moveStick = new MoveStick(30,30,100,this);
         fireStick = new FireWeaponStick(400,300,40,this);
         room.add(moveStick);
@@ -65,12 +66,17 @@ public class Player extends Entity {
         if(red > maxRed) red = maxRed;
         if(green > maxGreen) green = maxGreen;
         if(blue > maxBlue) blue = maxBlue;
+        if(health<=0)
+        {
+            isAlive=false;
+            room.remove(this);
+        }
     }
 
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(texture,x,y,width,height);
-        Gdx.app.log("Mana","Red = " + red + " Blue = " + blue + " Green = " + green);
+       // Gdx.app.log("Mana","Red = " + red + " Blue = " + blue + " Blue = " + green);
         font.draw(batch,"Red = " + red,10,30,100,150,false);
     }
 

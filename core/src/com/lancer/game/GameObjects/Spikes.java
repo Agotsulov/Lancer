@@ -4,12 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lancer.game.GameObject;
+import com.lancer.game.gobjects.Entity;
 
 /**
  * Created by byzilio on 02.12.17.
  */
 
-public class Spikes extends GameObject{
+public class Spikes extends Entity {
     Texture texture;
 
     public Spikes(float x, float y, float width, float height) {
@@ -21,7 +22,7 @@ public class Spikes extends GameObject{
 
     @Override
     public void update() {
-
+super.update();
     }
 
     @Override
