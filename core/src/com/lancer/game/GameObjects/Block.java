@@ -17,7 +17,7 @@ public class Block extends GameObject{
     public Block(float x, float y, float width, float height) {
         super(x, y, width, height);
         texture = new Texture("badlogic.jpg");
-        name = "B";
+        name = "Block";
     }
 
 

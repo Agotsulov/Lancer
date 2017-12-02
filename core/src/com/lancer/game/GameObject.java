@@ -15,7 +15,6 @@ public abstract class GameObject {
     public float x, y;
     public float width,height;
 
-
     public Vector2 u;
     public Vector2 a;
     public float maxVelocity;
@@ -196,4 +195,7 @@ public abstract class GameObject {
         u.add(force);
     }
 
+    public void dispose(){
+
+    }
 }

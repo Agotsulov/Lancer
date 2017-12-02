@@ -1,4 +1,4 @@
-package com.lancer.game.GameObjects;
+package com.lancer.game.gobjects;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -21,6 +21,8 @@ public class Stick extends GameObject {
 
     Texture texture;
 
+    public Player player;
+
     public Stick(float x,float y,float r) {
         cX = x + r;
         cY = y + r;
@@ -33,12 +35,32 @@ public class Stick extends GameObject {
         this.width = 2*r;
         this.height = 2*r;
         texture = new Texture("stick.png");
+        player = null;
     }
+
+    public Stick(float x,float y,float r,Player p) {
+        cX = x + r;
+        cY = y + r;
+        this.name = "Stick";
+        this.layer = 9;
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.dir = new Vector2(0,0);
+        this.width = 2*r;
+        this.height = 2*r;
+        texture = new Texture("stick.png");
+        player = p;
+    }
+
 
 
     @Override
     public void update() {
 
+    }
+
+    public void end(){
     }
 
     @Override
@@ -48,6 +70,11 @@ public class Stick extends GameObject {
 
     @Override
     public void collide(GameObject another) {
+
+    }
+
+    @Override
+    public void dispose() {
 
     }
 }

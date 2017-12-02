@@ -1,9 +1,8 @@
 package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObjects.Block;
-import com.lancer.game.GameObjects.Player;
+import com.lancer.game.gobjects.Player;
 import com.lancer.game.GameObjects.Spikes;
 
 import java.util.ArrayList;
