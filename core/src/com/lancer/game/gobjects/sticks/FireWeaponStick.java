@@ -9,16 +9,17 @@ import com.lancer.game.gobjects.Stick;
  */
 
 public class FireWeaponStick extends Stick {
-    public FireWeaponStick(float r, Player p) {
-        super(p.x + p.width / 2, p.y + p.height / 2, r, p);
+    public FireWeaponStick(float x,float y,float r, Player p) {
+        super(x, y, r, p);
     }
 
 
     public void end(){
-        if(dir.len() != 0){
-            Fireball fb = new Fireball(player.x + player.width / 2, player.y + player.height / 2,dir);
+        if(player.red > 0) {
+            Fireball fb = new Fireball(player.x + player.width / 2, player.y + player.height / 2, dir,1/player.red*10);
+            player.red -= 1;
             player.room.add(fb);
-            player.room.overlap(fb,player.room.get("Entity"));
+            player.room.overlap(fb, player.room.get("Entity"));
         }
     }
 }

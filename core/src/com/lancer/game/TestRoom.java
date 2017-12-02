@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.lancer.game.GameObjects.Block;
 import com.lancer.game.gobjects.Player;
 import com.lancer.game.GameObjects.Spikes;
+import com.lancer.game.gobjects.SpeckFire;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,14 @@ class TestRoom extends Room {
 
         overlap(p,s);
         add(s);
+
+        List<GameObject> fs = new ArrayList<GameObject>();
+        for(int i = 0;i < 5;i++){
+            fs.add(new SpeckFire(300 + i*40,170,30,30));
+        }
+        add(fs);
+        overlap(p,fs);
+
         /*
         for(int i = 0;i < 100;i++){
             add(new Block(i*100,-50,100,100));

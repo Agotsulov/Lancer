@@ -200,6 +200,7 @@ public abstract class GameObject {
     }
 
     public void dispose(){
-
+        collide = null;
+        overlap = null;
     }
 }

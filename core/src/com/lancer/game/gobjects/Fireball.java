@@ -13,8 +13,9 @@ import com.lancer.game.GameObject;
 public class Fireball extends GameObject {
 
     Texture texture;
+    public int damage;
 
-    public Fireball(float x, float y, Vector2 dir){
+    public Fireball(float x, float y, Vector2 dir,int damage){
         this.x = x;
         this.y = y;
         width = 10;
@@ -23,6 +24,7 @@ public class Fireball extends GameObject {
         u = dir;
         texture = new Texture("fireball.png");
         mass = 0;
+        this.damage = damage;
     }
 
     @Override
@@ -34,7 +36,7 @@ public class Fireball extends GameObject {
     public void collide(GameObject another) {
         if(another.tag == "Entity"){
             Entity e = (Entity) another;
-            e.health -= 10;
+            e.health -= damage;
         }
     }
 

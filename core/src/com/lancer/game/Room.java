@@ -74,4 +74,10 @@ public class Room extends ArrayList<GameObject> {
             get(i).dispose();
         }
     }
+
+    public void remove(GameObject o){
+        layers[o.layer].remove(o);
+        o.dispose();
+        super.remove(o);
+    }
 }
