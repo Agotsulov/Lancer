@@ -21,8 +21,6 @@ public abstract class GameObject {
     public float maxVelocity;
 
     public float mass;
-    public boolean isSolid = false;
-    public boolean isKinetic = false;
 
     public String name;
     public String tag;
@@ -44,7 +42,6 @@ public abstract class GameObject {
         tag = "";
         layer = 0;
         u = new Vector2(0,0);
-        isSolid = true;
         a = new Vector2(0,0);
         maxVelocity = 10f;
         mass = 0.4f;
@@ -59,7 +56,6 @@ public abstract class GameObject {
         tag = "";
         layer = 0;
         u = new Vector2(0,0);
-        isSolid = true;
         a = new Vector2(0,0);
         maxVelocity = 10f;
         mass = 0.4f;
@@ -71,7 +67,6 @@ public abstract class GameObject {
 
     public void update(){
         if((a.len() == 0) && (u.len() != 0)){
-
             if((u.len() > 0) && (u.len() - mass > 0)){
 
                 u.setLength(u.len() - mass);
@@ -126,7 +121,6 @@ public abstract class GameObject {
     }
 
     public void repelX(GameObject another){
-        if (isSolid == true && another.isSolid==true) {
             if (u.x > 0) {
                 x = another.x - width;
                 contact = LEFT;
@@ -135,10 +129,8 @@ public abstract class GameObject {
                 x = another.x + another.width;
                 contact = RIGHT;
             }
-        }
     }
     public void repelY(GameObject another) {
-        if (isSolid == true && another.isSolid==true) {
             if (u.y > 0) {
                 y = another.y - height;
                 contact = DOWN;
@@ -147,7 +139,6 @@ public abstract class GameObject {
                 y = another.y + another.height;
                 contact = UP;
             }
-        }
     }
 
     public abstract void draw(SpriteBatch batch);

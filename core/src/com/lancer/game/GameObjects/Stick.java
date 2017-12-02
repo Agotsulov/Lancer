@@ -26,7 +26,6 @@ public class Stick extends GameObject {
         cY = y + r;
         this.name = "Stick";
         this.layer = 9;
-        this.isSolid = false;
         this.x = x;
         this.y = y;
         this.r = r;

@@ -4,6 +4,10 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObjects.Block;
 import com.lancer.game.GameObjects.Player;
+import com.lancer.game.GameObjects.Spikes;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by byzilio on 28.11.17.
@@ -30,15 +34,25 @@ class TestRoom extends Room {
 
         t.addForce(v1);
         */
-        add(new Player(this));
+        Player p = new Player(this);
+        List<GameObject> b = new ArrayList<GameObject>();
 
-        add(new Block(350,130,100,100));
+        //add(new Block(350,130,100,100));
 
-
-        for(int i = 0;i < 100;i++){
-            add(new Block(i*100, Gdx.graphics.getHeight() - 50,100,100));
+        for(int i = 0;i < 3;i++){
+            b.add(new Block(i*100, Gdx.graphics.getHeight() - 50,100,100));
         }
 
+        collide(p,b);
+
+        Spikes s = new Spikes(350,130,100,100);
+
+        add(b);
+        add(p);
+
+        overlap(p,s);
+        add(s);
+        /*
         for(int i = 0;i < 100;i++){
             add(new Block(i*100,-50,100,100));
         }
@@ -50,7 +64,7 @@ class TestRoom extends Room {
         for(int i = 0;i < 100;i++){
             add(new Block(Gdx.graphics.getWidth() - 50,i*100,100,100));
         }
-
+        */
     }
 
 }

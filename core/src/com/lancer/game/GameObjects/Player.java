@@ -18,6 +18,7 @@ public class Player extends GameObject {
 
     public Player(Room room) {
         super();
+        //Room.collide(this,room);
         moveStick = new Stick(30,30,100);
         room.add(moveStick);
         mass = 100;
@@ -26,20 +27,20 @@ public class Player extends GameObject {
         width = 50;
         height = 50;
         name = "Player";
-        texture = new Texture("player.png");
-        isSolid = true;
-        maxVelocity = 2;
+        texture = new Texture("player.png");maxVelocity = 2;
+        layer = 3;
     }
 
     @Override
     public void update() {
+        //Gdx.app.log("Player","moveStick = " + moveStick.dir);
         /*
-        Gdx.app.log("Player","moveStick = " + moveStick.dir);
         Gdx.app.log("Player","moveStick.len = " + moveStick.dir.len());
         Gdx.app.log("Player","u = " + u);
         Gdx.app.log("Player","a = " + a);
-        Gdx.app.log("Player","" + toString());
         */
+        //Gdx.app.log("Player","" + toString());
+
         super.update();
         a = moveStick.dir;
     }

@@ -26,7 +26,7 @@ public class GameScreen  implements Screen{
     TouchListener touchListener;
 
 
-    public Room curRoom;
+    public static Room curRoom;
     public Room map[][];
 
     @Override
@@ -45,19 +45,27 @@ public class GameScreen  implements Screen{
     }
 
     public void update(){
-
-
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
             curRoom.get(i).fixedUpdate();
         }
 
-
-
         for(int i = 0; i < curRoom.size(); i++){
             curRoom.get(i).moveX();
         }
+
+        Gdx.app.log("GameScreen","" + curRoom.collide.size());
+        for(int i = 0; i < curRoom.collide.size(); i++){
+            GameObject f = curRoom.collide.get(i).getFirst();
+            GameObject s = curRoom.collide.get(i).getSecond();
+            if(f.overlaps(s)){
+                encountered.add(new Pair<GameObject,GameObject>(f, s));
+                f.repelX(s);
+            }
+        }
+
+        /*
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
@@ -70,11 +78,32 @@ public class GameScreen  implements Screen{
                 }
             }
         }
-
+        */
 
         for(int i = 0; i < curRoom.size(); i++){
             curRoom.get(i).moveY();
         }
+
+
+        for(int i = 0; i < curRoom.collide.size(); i++){
+            GameObject f = curRoom.collide.get(i).getFirst();
+            GameObject s = curRoom.collide.get(i).getSecond();
+            if(f.overlaps(s)){
+                encountered.add(new Pair<GameObject,GameObject>(f, s));
+                f.repelY(s);
+            }
+        }
+
+
+        for(int i = 0; i < curRoom.overlap.size(); i++){
+            GameObject f = curRoom.overlap.get(i).getFirst();
+            GameObject s = curRoom.overlap.get(i).getSecond();
+            if(f.overlaps(s)){
+                encountered.add(new Pair<GameObject,GameObject>(f, s));
+            }
+        }
+
+        /*
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
@@ -87,7 +116,7 @@ public class GameScreen  implements Screen{
                 }
             }
         }
-
+        */
         for(int i = 0; i < curRoom.size(); i++){
             curRoom.get(i).update();
         }
@@ -96,7 +125,6 @@ public class GameScreen  implements Screen{
             encountered.get(i).getFirst().collide(encountered.get(i).getSecond());
             encountered.get(i).getSecond().collide(encountered.get(i).getFirst());
         }
-
 
     }
 
