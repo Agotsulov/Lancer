@@ -20,6 +20,7 @@ public class Fireball extends GameObject {
         this.y = y;
         width = 10;
         height = 10;
+        name="Fireball";
         maxVelocity = 5;
         u = dir;
         texture = new Texture("fireball.png");
@@ -34,7 +35,7 @@ public class Fireball extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-        if(another.tag == "Entity" ){
+        if(another.tag == "Entity"){
             Entity e = (Entity) another;
             e.health -= damage;
             this.dispose();

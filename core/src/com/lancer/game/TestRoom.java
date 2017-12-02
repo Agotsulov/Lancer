@@ -5,6 +5,7 @@ import com.lancer.game.GameObjects.Block;
 import com.lancer.game.gobjects.Blue;
 import com.lancer.game.gobjects.Deep;
 import com.lancer.game.gobjects.Fireblock;
+import com.lancer.game.gobjects.FollowEnemy;
 import com.lancer.game.gobjects.Player;
 import com.lancer.game.GameObjects.Spikes;
 import com.lancer.game.gobjects.SpeckFire;
@@ -47,10 +48,11 @@ class TestRoom extends Room {
         }
 
         collide(p,b);
-
+        FollowEnemy one=new FollowEnemy(200,130,40,40,this,p);
         Deep s= new Deep(350,130,100,100);
         Fireblock s1= new Fireblock(460,130,100,100);
         Blue s2= new Blue(570,130,100,100);
+
         add(b);
         add(p);
 
@@ -60,7 +62,8 @@ class TestRoom extends Room {
         add(s1);
         overlap(p,s2);
         add(s2);
-
+        overlap(p,one);
+        add(one);
         List<GameObject> fs = new ArrayList<GameObject>();
         for(int i = 0;i < 5;i++){
             GameObject f = new SpeckFire(300 + i*40,170,30,30);

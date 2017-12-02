@@ -27,11 +27,12 @@ public class Entity extends GameObject{
     }
 
     public void update(){
+
         super.update();
         Gdx.app.log("sqwwd","");
         if(health <= 0){
-        this.width=0;
-        this.height=0;
+        this.isAlive=false;
+
         }
     }
 

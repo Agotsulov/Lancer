@@ -16,7 +16,7 @@ public class FireWeaponStick extends Stick {
 
     public void end(){
         if(player.red > 0 && player.isAlive==true) {
-            Fireball fb = new Fireball(player.x + player.width / 2, player.y + player.height / 2, dir,1/player.red*10);
+            Fireball fb = new Fireball(player.x + player.width / 2, player.y + player.height / 2, dir,(1/player.red)*10);
             player.red -= 1;
             player.room.add(fb);
             player.room.overlap(fb, player.room.get("Entity"));
