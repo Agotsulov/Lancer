@@ -31,6 +31,7 @@ public class SpeckFire extends GameObject {
             Gdx.app.log("SpeckFire","++");
             if(p.red < p.maxRed){
                 p.red++;
+                isAlive = false;
                 p.room.remove(this);
             }
         }

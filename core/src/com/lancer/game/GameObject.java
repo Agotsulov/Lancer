@@ -19,6 +19,9 @@ public abstract class GameObject {
     public List<GameObject>  collide = new ArrayList<GameObject>();
     public List<GameObject>  overlap = new ArrayList<GameObject>();
 
+    public boolean isAlive = true;
+    public boolean isVisible = true;
+
     public Vector2 u;
     public Vector2 a;
     public float maxVelocity;

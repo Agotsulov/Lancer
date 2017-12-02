@@ -53,14 +53,26 @@ class TestRoom extends Room {
         overlap(p,s);
         add(s);
 
+
         List<GameObject> fs = new ArrayList<GameObject>();
         for(int i = 0;i < 5;i++){
-            fs.add(new SpeckFire(300 + i*40,170,30,30));
+            GameObject f = new SpeckFire(300 + i*40,170,30,30);
+            fs.add(f);
         }
         add(fs);
+
         overlap(p,fs);
 
         /*
+        List<GameObject> fs = new ArrayList<GameObject>();
+        for(int i = 0;i < 5;i++){
+            GameObject f = new SpeckFire(300 + i*40,170,30,30);
+            fs.add(f);
+            overlap(f,p);
+        }
+        add(fs);
+
+
         for(int i = 0;i < 100;i++){
             add(new Block(i*100,-50,100,100));
         }

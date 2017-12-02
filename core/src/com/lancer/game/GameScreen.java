@@ -60,7 +60,7 @@ public class GameScreen  implements Screen{
             GameObject f = curRoom.get(i);
             for(int j = 0;j < f.collide.size();j++) {
                 GameObject s = f.collide.get(j);
-                if(f.overlaps(s)){
+                if(f.overlaps(s) && f.isAlive && s.isAlive){
                     encountered.add(new Pair<GameObject,GameObject>(f, s));
                     f.repelX(s);
                 }
@@ -91,7 +91,7 @@ public class GameScreen  implements Screen{
             GameObject f = curRoom.get(i);
             for(int j = 0;j < f.collide.size();j++) {
                 GameObject s = f.collide.get(j);
-                if(f.overlaps(s)){
+                if(f.overlaps(s) && f.isAlive && s.isAlive){
                     encountered.add(new Pair<GameObject,GameObject>(f, s));
                     f.repelY(s);
                 }
@@ -103,7 +103,7 @@ public class GameScreen  implements Screen{
             GameObject f = curRoom.get(i);
             for(int j = 0;j < f.overlap.size();j++) {
                 GameObject s = f.overlap.get(j);
-                if(f.overlaps(s)){
+                if(f.overlaps(s) && f.isAlive && s.isAlive){
                     encountered.add(new Pair<GameObject,GameObject>(f, s));
                 }
             }
