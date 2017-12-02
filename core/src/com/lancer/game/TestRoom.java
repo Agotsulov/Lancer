@@ -32,6 +32,9 @@ class TestRoom extends Room {
         */
         add(new Player(this));
 
+        add(new Block(350,130,100,100));
+
+
         for(int i = 0;i < 100;i++){
             add(new Block(i*100, Gdx.graphics.getHeight() - 50,100,100));
         }
@@ -47,6 +50,7 @@ class TestRoom extends Room {
         for(int i = 0;i < 100;i++){
             add(new Block(Gdx.graphics.getWidth() - 50,i*100,100,100));
         }
+
     }
 
 }

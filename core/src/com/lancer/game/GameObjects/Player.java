@@ -28,18 +28,20 @@ public class Player extends GameObject {
         name = "Player";
         texture = new Texture("player.png");
         isSolid = true;
+        maxVelocity = 2;
     }
 
     @Override
     public void update() {
+        /*
         Gdx.app.log("Player","moveStick = " + moveStick.dir);
         Gdx.app.log("Player","moveStick.len = " + moveStick.dir.len());
         Gdx.app.log("Player","u = " + u);
         Gdx.app.log("Player","a = " + a);
-
+        Gdx.app.log("Player","" + toString());
+        */
+        super.update();
         a = moveStick.dir;
-
-
     }
 
     @Override

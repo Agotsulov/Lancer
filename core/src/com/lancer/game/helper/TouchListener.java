@@ -40,11 +40,11 @@ public class TouchListener implements InputProcessor{
 
         for(int i=0;i<this.sticks.size();i++)
         {
-            if(sticks.get(i).name=="Stick")
+            if(sticks.get(i).name == "Stick")
             {
-                Stick s= (Stick) sticks.get(i);
-                if(((screenX-s.cX)*(screenX-s.cX)+(Gdx.graphics.getHeight()-screenY-s.y)*(Gdx.graphics.getHeight()-screenY-s.y))>=s.r){
-                    s.pointer=pointer;
+                Stick s = (Stick) sticks.get(i);
+                if( ((screenX-s.cX)*(screenX-s.cX)+(Gdx.graphics.getHeight()-screenY-s.cY)*(Gdx.graphics.getHeight()-screenY-s.cY))<=s.r){
+                    s.pointer = pointer;
                 }
             }
         }

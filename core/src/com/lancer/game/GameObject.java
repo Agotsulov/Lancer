@@ -65,7 +65,19 @@ public abstract class GameObject {
         mass = 0.4f;
     }
 
-    public abstract void update();
+    public void fixedUpdate(){
+
+    }
+
+    public void update(){
+        if((a.len() == 0) && (u.len() != 0)){
+
+            if((u.len() > 0) && (u.len() - mass > 0)){
+
+                u.setLength(u.len() - mass);
+            } else u.setLength(0);
+        }
+    }
 
 
 
@@ -80,23 +92,14 @@ public abstract class GameObject {
 
     public void moveY(){
         y += u.y;
-        if((a.len() == 0) && (u.len() != 0)){
-
-            if((u.len() > 0) && (u.len() - mass > 0)){
-
-                u.setLength(u.len() - mass);
-            } else u.setLength(0);
-
-
-        }
     }
 
     public boolean overlaps(GameObject another){
 
         float x1 = this.x + 1;
-        float x2 = another.x + 1;
+        float x2 = another.x;
         float y1 = this.y + 1;
-        float y2 = another.y + 1;
+        float y2 = another.y;
         float width1 = this.width - 2;
         float width2 = another.width;
         float height1 = this.height - 2;
@@ -129,7 +132,7 @@ public abstract class GameObject {
                 contact = LEFT;
             }
             if (u.x < 0) {
-                x = another.x + another.width + 1;
+                x = another.x + another.width;
                 contact = RIGHT;
             }
         }

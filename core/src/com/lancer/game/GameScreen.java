@@ -50,8 +50,10 @@ public class GameScreen  implements Screen{
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
-            curRoom.get(i).update();
+            curRoom.get(i).fixedUpdate();
         }
+
+
 
         for(int i = 0; i < curRoom.size(); i++){
             curRoom.get(i).moveX();
@@ -60,8 +62,8 @@ public class GameScreen  implements Screen{
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j){
-
                     if(current.overlaps(curRoom.get(j))){
+                        Gdx.app.log("GameScreen","Y");
                         encountered.add(new Pair<GameObject,GameObject>(current, curRoom.get(j)));
                         current.repelX(curRoom.get(j));
                     }
@@ -77,8 +79,8 @@ public class GameScreen  implements Screen{
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j) {
-
                     if (current.overlaps(curRoom.get(j))) {
+                        Gdx.app.log("GameScreen","Y");
                         encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
                         current.repelY(curRoom.get(j));
                     }
@@ -86,6 +88,9 @@ public class GameScreen  implements Screen{
             }
         }
 
+        for(int i = 0; i < curRoom.size(); i++){
+            curRoom.get(i).update();
+        }
 
         for(int i = 0; i < encountered.size(); i++){
             encountered.get(i).getFirst().collide(encountered.get(i).getSecond());
