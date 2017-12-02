@@ -22,7 +22,7 @@ class TestRoom extends Room {
         TestObject t=new TestObject(200,0,50,50,"B4");
         add(new TestObject(200,300,100,100,"A4"));
         add(t);
-        Vector2 v1=new Vector2(0,1000);
+        Vector2 v1=new Vector2(0,10);
 
         t.addForce(v1);
 

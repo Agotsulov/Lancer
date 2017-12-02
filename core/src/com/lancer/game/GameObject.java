@@ -8,6 +8,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
+import java.util.ArrayList;
+
 public abstract class GameObject {
 
     public float x, y;
@@ -33,6 +35,7 @@ public abstract class GameObject {
     public final static int DOWN = 3;
     public final static int LEFT = 4;
 
+
     public GameObject(float x, float y, float width, float height) {
         this.x = x;
         this.y = y;
@@ -47,7 +50,20 @@ public abstract class GameObject {
         maxVelocity = 10f;
         mass = 0.4f;
     }
-
+    public GameObject() {
+        this.x = 0;
+        this.y = 0;
+        this.width = 0;
+        this.height = 0;
+        name = "";
+        tag = "";
+        layer = 0;
+        u = new Vector2(0,0);
+        isSolid = true;
+        a = new Vector2(0,0);
+        maxVelocity = 10f;
+        mass = 0.4f;
+    }
 
     public abstract void update();
 

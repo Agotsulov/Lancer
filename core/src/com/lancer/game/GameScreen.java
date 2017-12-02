@@ -3,8 +3,10 @@ package com.lancer.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.lancer.game.helper.Camera;
 import com.lancer.game.helper.Pair;
+import com.lancer.game.helper.TouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,14 +22,16 @@ public class GameScreen  implements Screen{
     public int seed;
 
     Camera camera;
-
+TouchListener touchListener;
     public Room curRoom;
     public Room map[][];
 
     @Override
     public void show() {
+
         camera = new Camera();
         curRoom = new TestRoom();
+        touchListener=new TouchListener(curRoom.layers[9]);
     }
 
     @Override
@@ -70,7 +74,7 @@ public class GameScreen  implements Screen{
             GameObject current = curRoom.get(i);
             for(int j = 0; j < curRoom.size(); j++){
                 if(i != j) {
-                
+
                     if (current.overlaps(curRoom.get(j))) {
                         encountered.add(new Pair<GameObject, GameObject>(current, curRoom.get(j)));
                         current.repelY(curRoom.get(j));
