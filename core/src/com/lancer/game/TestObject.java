@@ -15,14 +15,12 @@ public class TestObject extends GameObject {
     public TestObject(){
 
         super(0,0,130,120);
-        touch=new TouchListener();
         texture = new Texture("badlogic.jpg");
         name = "A";
     }
     public TestObject(float x,float y,float width,float height){
 
         super(x,y,width,height);
-        touch=new TouchListener();
 
         texture = new Texture("badlogic.jpg");
         name = "A";
@@ -32,7 +30,6 @@ public class TestObject extends GameObject {
 
     public TestObject(float x,float y,float width,float height,String name){
         super(x,y,width,height);
-        touch=new TouchListener();
         Gdx.input.setInputProcessor(touch);
         texture = new Texture("badlogic.jpg");
         this.name = name;

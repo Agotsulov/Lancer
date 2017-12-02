@@ -22,7 +22,10 @@ public class GameScreen  implements Screen{
     public int seed;
 
     Camera camera;
-TouchListener touchListener;
+
+    TouchListener touchListener;
+
+
     public Room curRoom;
     public Room map[][];
 
@@ -32,11 +35,11 @@ TouchListener touchListener;
         camera = new Camera();
         curRoom = new TestRoom();
         touchListener=new TouchListener(curRoom.layers[9]);
+        Gdx.input.setInputProcessor(touchListener);
     }
 
     @Override
     public void render(float delta) {
-
         update();
         draw();
     }

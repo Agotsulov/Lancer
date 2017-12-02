@@ -35,12 +35,11 @@ public abstract class GameObject {
     public final static int DOWN = 3;
     public final static int LEFT = 4;
 
-
-    public GameObject(float x, float y, float width, float height) {
-        this.x = x;
-        this.y = y;
-        this.width = width;
-        this.height = height;
+    public GameObject() {
+        this.x = 0;
+        this.y = 0;
+        this.width = 0;
+        this.height = 0;
         name = "";
         tag = "";
         layer = 0;
@@ -50,11 +49,12 @@ public abstract class GameObject {
         maxVelocity = 10f;
         mass = 0.4f;
     }
-    public GameObject() {
-        this.x = 0;
-        this.y = 0;
-        this.width = 0;
-        this.height = 0;
+
+    public GameObject(float x, float y, float width, float height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
         name = "";
         tag = "";
         layer = 0;
@@ -129,7 +129,7 @@ public abstract class GameObject {
                 contact = LEFT;
             }
             if (u.x < 0) {
-                x = another.x + another.width;
+                x = another.x + another.width + 1;
                 contact = RIGHT;
             }
         }
