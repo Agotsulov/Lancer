@@ -24,9 +24,9 @@ public class LancerGame extends Game {
 		/*
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 0, 0);
-		batch.end();
+		camera.begin();
+		camera.draw(img, 0, 0);
+		camera.end();
 		*/
 	}
 	

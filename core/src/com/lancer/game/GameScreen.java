@@ -3,11 +3,8 @@ package com.lancer.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Vector2;
+import com.lancer.game.helper.Camera;
 import com.lancer.game.helper.Pair;
-import com.lancer.game.helper.Touch;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +19,14 @@ public class GameScreen  implements Screen{
 
     public int seed;
 
-    SpriteBatch batch;
+    Camera camera;
 
     public Room curRoom;
     public Room map[][];
 
     @Override
     public void show() {
-        batch = new SpriteBatch();
+        camera = new Camera();
         curRoom = new TestRoom();
     }
 
@@ -96,18 +93,19 @@ public class GameScreen  implements Screen{
     public void draw() {
         Gdx.gl.glClearColor(0, 1, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-
+        camera.begin();
+        camera.render(curRoom);
+        /*
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < curRoom.layers[j].size(); i++) {
-                curRoom.layers[j].get(i).draw(batch);
+                curRoom.layers[j].get(i).draw(camera);
             }
-        }/*
+        }
         for (int i = 0; i < curRoom.size(); i++) {
-            curRoom.get(i).draw(batch);
+            curRoom.get(i).draw(camera);
         }
         */
-        batch.end();
+        camera.end();
     }
     public Room[][] generate(int seed){
         return null;
@@ -135,7 +133,7 @@ public class GameScreen  implements Screen{
 
     @Override
     public void dispose () {
-        batch.dispose();
+        camera.dispose();
     }
 
 

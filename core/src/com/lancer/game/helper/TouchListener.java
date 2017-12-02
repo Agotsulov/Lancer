@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
  * Created by zope on 01.12.2017.
  */
 
-public class Touch implements InputProcessor{
+public class TouchListener implements InputProcessor{
 
     public int x,y,x1,y1;
 

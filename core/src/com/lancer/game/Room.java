@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Room extends ArrayList<GameObject> {
 
-    List<GameObject> layers[];
+    public List<GameObject>[] layers;
 
     public Room(){
         //add( new TestObject());
