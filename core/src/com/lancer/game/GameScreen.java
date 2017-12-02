@@ -56,12 +56,14 @@ public class GameScreen  implements Screen{
         }
 
         Gdx.app.log("GameScreen","" + curRoom.collide.size());
-        for(int i = 0; i < curRoom.collide.size(); i++){
-            GameObject f = curRoom.collide.get(i).getFirst();
-            GameObject s = curRoom.collide.get(i).getSecond();
-            if(f.overlaps(s)){
-                encountered.add(new Pair<GameObject,GameObject>(f, s));
-                f.repelX(s);
+        for(int i = 0; i < curRoom.size(); i++){
+            GameObject f = curRoom.get(i);
+            for(int j = 0;j < f.collide.size();j++) {
+                GameObject s = f.collide.get(j);
+                if(f.overlaps(s)){
+                    encountered.add(new Pair<GameObject,GameObject>(f, s));
+                    f.repelX(s);
+                }
             }
         }
 
@@ -85,24 +87,27 @@ public class GameScreen  implements Screen{
         }
 
 
-        for(int i = 0; i < curRoom.collide.size(); i++){
-            GameObject f = curRoom.collide.get(i).getFirst();
-            GameObject s = curRoom.collide.get(i).getSecond();
-            if(f.overlaps(s)){
-                encountered.add(new Pair<GameObject,GameObject>(f, s));
-                f.repelY(s);
+        for(int i = 0; i < curRoom.size(); i++){
+            GameObject f = curRoom.get(i);
+            for(int j = 0;j < f.collide.size();j++) {
+                GameObject s = f.collide.get(j);
+                if(f.overlaps(s)){
+                    encountered.add(new Pair<GameObject,GameObject>(f, s));
+                    f.repelY(s);
+                }
             }
         }
 
 
-        for(int i = 0; i < curRoom.overlap.size(); i++){
-            GameObject f = curRoom.overlap.get(i).getFirst();
-            GameObject s = curRoom.overlap.get(i).getSecond();
-            if(f.overlaps(s)){
-                encountered.add(new Pair<GameObject,GameObject>(f, s));
+        for(int i = 0; i < curRoom.size(); i++){
+            GameObject f = curRoom.get(i);
+            for(int j = 0;j < f.overlap.size();j++) {
+                GameObject s = f.overlap.get(j);
+                if(f.overlaps(s)){
+                    encountered.add(new Pair<GameObject,GameObject>(f, s));
+                }
             }
         }
-
         /*
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);

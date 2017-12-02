@@ -9,11 +9,15 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class GameObject {
 
     public float x, y;
     public float width,height;
+
+    public List<GameObject>  collide = new ArrayList<GameObject>();
+    public List<GameObject>  overlap = new ArrayList<GameObject>();
 
     public Vector2 u;
     public Vector2 a;

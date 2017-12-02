@@ -40,32 +40,30 @@ public class Room extends ArrayList<GameObject> {
 
 
     public void collide(GameObject g,GameObject c){
-        collide.add(new Pair<GameObject, GameObject>(g,c));
+        g.collide.add(c);
     }
 
     public void collide(GameObject g,List<GameObject> c){
-        Gdx.app.log("Room","Add");
-
         for(int i = 0;i < c.size();i++){
-            collide.add(new Pair<GameObject, GameObject>(g,c.get(i)));
+            collide(g,c.get(i));
         }
     }
 
 
     public void overlap(GameObject g,GameObject c){
-        overlap.add(new Pair<GameObject, GameObject>(g,c));
+        g.overlap.add(c);
     }
 
     public void overlap(GameObject g,List<GameObject> c){
         for(int i = 0;i < c.size();i++){
-            overlap.add(new Pair<GameObject, GameObject>(g,c.get(i)));
+            overlap(g,c.get(i));
         }
     }
 
     public List<GameObject> get(String tag){
         List<GameObject> result = new ArrayList<GameObject>();
         for(int i = 0;i < size();i++){
-            if(get(i).name == tag) result.add(get(i));
+            if(get(i).tag == tag) result.add(get(i));
         }
         return result;
     }
