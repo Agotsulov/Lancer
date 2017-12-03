@@ -31,7 +31,7 @@ public class Camera extends SpriteBatch {
     public void render(Room room){
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < room.layers[j].size(); i++) {
-                room.layers[j].get(i).draw(this);
+                if(room.layers[j].get(i).isVisible) room.layers[j].get(i).draw(this);
             }
         }
     }

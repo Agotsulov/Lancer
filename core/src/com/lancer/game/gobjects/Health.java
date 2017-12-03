@@ -28,19 +28,18 @@ import com.lancer.game.GameObject;
     }
     @Override
     public void draw(SpriteBatch batch) {
-        Gdx.app.log("hp",""+player.width*player.health/100);
-        isAlive=player.isAlive;
+        Gdx.app.log("hp","" + player.width*player.health/100);
 
         batch.draw(texture,player.x,player.y+player.height+10,player.width,20);
         batch.draw(polos,player.x,player.y+player.height+10,player.width*player.health/100,20);
     }
 
-public void update(){
-        if(isAlive==false)
+    public void update(){
+        if(player.isAlive == false)
         {
-           // this.
+           kill();
         }
-}
+    }
 
 
     @Override

@@ -14,6 +14,8 @@ import java.util.ArrayList;
 public class Entity extends GameObject{
 
     public int health;
+    public int godTime = 60;
+    public int curTime = 60;
 
     public Entity(){
         health = 100;
@@ -27,13 +29,11 @@ public class Entity extends GameObject{
     }
 
     public void update(){
-
         super.update();
-        Gdx.app.log("sqwwd","");
-        if(health <= 0){
-        this.isAlive=false;
 
-        }
+        curTime++;
+        if(curTime > godTime) curTime = godTime;
+        if(health <= 0) this.kill();
     }
 
     @Override
@@ -45,4 +45,12 @@ public class Entity extends GameObject{
     public void collide(GameObject another) {
 
     }
+
+    public void damage(int damage){
+        if(curTime >= godTime) {
+            health -= damage;
+            curTime = 0;
+        }
+    }
+
 }

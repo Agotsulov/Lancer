@@ -48,11 +48,11 @@ public class GameScreen  implements Screen{
         List<Pair<GameObject,GameObject>> encountered = new ArrayList<Pair<GameObject, GameObject>>();
 
         for(int i = 0; i < curRoom.size(); i++){
-            curRoom.get(i).fixedUpdate();
+            if(curRoom.get(i).isAlive) curRoom.get(i).fixedUpdate();
         }
 
         for(int i = 0; i < curRoom.size(); i++){
-            curRoom.get(i).moveX();
+            if(curRoom.get(i).isAlive) curRoom.get(i).moveX();
         }
 
 
@@ -85,7 +85,7 @@ public class GameScreen  implements Screen{
         */
 
         for(int i = 0; i < curRoom.size(); i++){
-            curRoom.get(i).moveY();
+            if(curRoom.get(i).isAlive) curRoom.get(i).moveY();
         }
 
 
@@ -126,7 +126,7 @@ public class GameScreen  implements Screen{
         }
         */
         for(int i = 0; i < curRoom.size(); i++){
-            curRoom.get(i).update();
+            if(curRoom.get(i).isAlive) curRoom.get(i).update();
         }
 
         for(int i = 0; i < encountered.size(); i++){

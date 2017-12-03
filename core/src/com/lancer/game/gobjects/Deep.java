@@ -25,11 +25,11 @@ public class Deep extends GameObject{
 
     @Override
     public void collide(GameObject another) {
-        if(another.name == "Player"){
+        if(another.tag == "Entity"){
             Player p = ((Player)another);
             Gdx.app.log("You are DIE","");
-           p.isAlive=false;
-           p.room.remove(p);
+            p.kill();
+            p.room.remove(p);
         }
     }
 }

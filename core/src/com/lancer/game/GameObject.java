@@ -206,4 +206,9 @@ public abstract class GameObject {
         collide = null;
         overlap = null;
     }
+
+    public void kill(){
+        isAlive = false;
+        isVisible = false;
+    }
 }

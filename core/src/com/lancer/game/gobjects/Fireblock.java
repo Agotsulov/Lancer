@@ -24,16 +24,10 @@ public class Fireblock extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-        if(another.name == "Player"){
-            Player p = ((Player)another);
-
-
-           if(p.godtime%60==0)
-           {
-               p.health-=10;
-               Gdx.app.log("You're burning hurry, here is your HEALTH",""+p.health);
-           }
-           p.godtime+=1;
+        if(another.tag == "Entity"){
+            Entity p = ((Entity) another);
+            Gdx.app.log("","" + p.toString());
+            p.damage(10);
 
            // p.room.remove(p);
         }

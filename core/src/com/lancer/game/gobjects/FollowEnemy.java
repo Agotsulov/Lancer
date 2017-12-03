@@ -16,12 +16,12 @@ import static java.lang.Math.sqrt;
  */
 
 public class FollowEnemy extends Entity {
-    public float playerx;
-    public float playery;
+
     Player player;
     Texture texture;
-    int health;
-Room room;
+
+    Room room;
+
     public FollowEnemy(float x, float y, float width, float height, Room room) {//наверное можно сделать конструктор получше но я был сонный если что поправь
         this.room = room;
         //свойства
@@ -33,7 +33,7 @@ Room room;
         mass = 50;
         layer = 3;
         maxVelocity = 1;
-        this.health = 1;
+        this.health = 5;
         isAlive = true;
         texture = new Texture("enemy.png");
         //объект плэера
@@ -46,7 +46,7 @@ Room room;
     @Override
     public void update() {
         super.update();
-        Gdx.app.log("You are DIE",""+ health);//ахуенно ебанутый алгоритм движения ебанутого врага лучше его исправить это алгоритм на сккорую руку хуюку
+        //Gdx.app.log("You are DIE",""+ health);//ахуенно ебанутый алгоритм движения ебанутого врага лучше его исправить это алгоритм на сккорую руку хуюку
         if (Math.sqrt((player.x - x) * (player.x - x) + (player.y - y) * (player.y - y)) <= 100) {
             a = new Vector2(player.x - x, player.y - y);
         } else {
@@ -59,31 +59,16 @@ Room room;
 
     }
 
+
     @Override
     public void draw(SpriteBatch batch) {
-
         batch.draw(texture, x, y, width, height);
-
     }
 
     @Override
     public void collide(GameObject another) {
-        if(health<=0){//если хпшки кончились то умирает вражок петушок
-            isAlive=false;
-            room.remove(this);
-        }
-        else {
-            if (another.name == "Player") {//если с игрочком столкнулся вражок то игрочок получает бессмертие на секунду но при этом теряте 5 хп так как враг его ебанул в лицо
-                if (player.godtime % 60 == 0) {
-                    player.health -= 5;
-                }
-                player.godtime++;
-            }
-            if (another.name == "Fireball") {//если враженьку ебанул файр то пизда ему он потрачено
-                health -= 1;
-
-            }
-
+        if(another.tag == "Entity"){
+            ((Entity) another).damage(10);
         }
     }
 }
