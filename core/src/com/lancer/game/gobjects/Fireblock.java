@@ -28,7 +28,7 @@ public class Fireblock extends GameObject {
             Player p = ((Player)another);
 
 
-           if(p.godtime%120==0)
+           if(p.godtime%60==0)
            {
                p.health-=10;
                Gdx.app.log("You're burning hurry, here is your HEALTH",""+p.health);

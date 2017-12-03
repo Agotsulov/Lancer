@@ -27,13 +27,14 @@ public class Player extends GameObject{
     public int maxRed = 10;
     public int maxGreen = 10;
     public int maxBlue = 10;
-
+    Health t;
     Texture texture;
     public int godtime;
     BitmapFont font = new BitmapFont();
     int health;
     public Player(Room room) {
         super();
+
         this.room = room;
         mass = 100;
         x = 300;
@@ -50,6 +51,7 @@ public class Player extends GameObject{
         fireStick = new FireWeaponStick(400,300,40,this);
         room.add(moveStick);
         room.add(fireStick);
+        t=new Health(this);
     }
 
     @Override
@@ -69,6 +71,7 @@ public class Player extends GameObject{
         if(health<=0)
         {
             isAlive=false;
+            health=0;
             room.remove(this);
         }
     }

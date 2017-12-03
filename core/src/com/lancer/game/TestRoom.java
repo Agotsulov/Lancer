@@ -6,6 +6,7 @@ import com.lancer.game.gobjects.Blue;
 import com.lancer.game.gobjects.Deep;
 import com.lancer.game.gobjects.Fireblock;
 import com.lancer.game.gobjects.FollowEnemy;
+import com.lancer.game.gobjects.Health;
 import com.lancer.game.gobjects.Player;
 import com.lancer.game.GameObjects.Spikes;
 import com.lancer.game.gobjects.SpeckFire;
@@ -39,6 +40,7 @@ class TestRoom extends Room {
         t.addForce(v1);
         */
         Player p = new Player(this);
+        add(p);
         List<GameObject> b = new ArrayList<GameObject>();
 
         //add(new Block(350,130,100,100));
@@ -48,13 +50,13 @@ class TestRoom extends Room {
         }
 
         collide(p,b);
-        FollowEnemy one=new FollowEnemy(200,130,40,40,this,p);
+        FollowEnemy one=new FollowEnemy(200,130,40,40,this);
         Deep s= new Deep(350,130,100,100);
         Fireblock s1= new Fireblock(460,130,100,100);
         Blue s2= new Blue(570,130,100,100);
-
+        Health health=new Health(p);
         add(b);
-        add(p);
+        add(health);
 
         overlap(p,s);
         add(s);

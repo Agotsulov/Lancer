@@ -22,13 +22,13 @@ public class FollowEnemy extends Entity {
     Texture texture;
     int health;
 Room room;
-    public FollowEnemy(float x, float y, float height, float width, Room room,Player player) {//наверное можно сделать конструктор получше но я был сонный если что поправь
+    public FollowEnemy(float x, float y, float width, float height, Room room) {//наверное можно сделать конструктор получше но я был сонный если что поправь
         this.room = room;
+        //свойства
         this.x = x;
         this.y = y;
         tag="Entity";
         this.height = height;
-this.player=player;
         this.width = width;
         mass = 50;
         layer = 3;
@@ -36,7 +36,12 @@ this.player=player;
         this.health = 1;
         isAlive = true;
         texture = new Texture("enemy.png");
+        //объект плэера
+        player= (Player) room.layers[3].get(0);
+
+
     }
+
 
     @Override
     public void update() {
