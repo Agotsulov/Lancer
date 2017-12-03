@@ -70,6 +70,7 @@ class TestRoom extends Room {
         add(s2);
         overlap(p,one);
         add(one);
+        Gdx.app.log("s",""+get("Entity"));
         List<GameObject> fs = new ArrayList<GameObject>();
         for(int i = 0;i < 5;i++){
             GameObject f = new SpeckFire(300 + i*40,170,30,30);

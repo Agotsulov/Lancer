@@ -33,6 +33,7 @@ public class Entity extends GameObject{
 
         curTime++;
         if(curTime > godTime) curTime = godTime;
+
         if(health <= 0) this.kill();
     }
 
@@ -47,6 +48,8 @@ public class Entity extends GameObject{
     }
 
     public void damage(int damage){
+        Gdx.app.log("CurTime",""+curTime);
+        Gdx.app.log("godTIme",""+godTime);
         if(curTime >= godTime) {
             health -= damage;
             curTime = 0;

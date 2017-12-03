@@ -34,8 +34,9 @@ public class GameScreen  implements Screen{
 
         camera = new Camera();
         curRoom = new TestRoom();
-        touchListener=new TouchListener(curRoom.layers[9]);
-        Gdx.input.setInputProcessor(touchListener);
+       // touchListener=new TouchListener(curRoom.layers[9]);
+        //Gdx.input.setInputProcessor(touchListener);
+
     }
 
     @Override

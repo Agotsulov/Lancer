@@ -8,6 +8,7 @@ import com.lancer.game.GameObject;
 import com.lancer.game.Room;
 import com.lancer.game.gobjects.sticks.FireWeaponStick;
 import com.lancer.game.gobjects.sticks.MoveStick;
+import com.lancer.game.helper.TouchListener;
 
 /**
  * Created by byzilio on 02.12.17.
@@ -38,27 +39,28 @@ public class Player extends Entity{
         super();
         tag = "Entity";
         this.room = room;
-        mass = 100;
+        mass = 1;
         x = 300;
         y = 300;
         width = 50;
         height = 50;
         name = "Player";
         texture = new Texture("player.png");
-        maxVelocity = 2;
+        maxVelocity = 20;
         layer = 3;
         health=100;
-        moveStick = new MoveStick(30,30,100,this);
-        fireStick = new FireWeaponStick(400,300,40,this);
-        room.add(moveStick);
-        room.add(fireStick);
+        Gdx.input.setInputProcessor(new TouchListener(this));
+        //moveStick = new MoveStick(30,30,100,this);
+        //fireStick = new FireWeaponStick(400,300,40,this);
+      //  room.add(moveStick);
+        //room.add(fireStick);
         t = new Health(this);
     }
 
     @Override
     public void update() {
         super.update();
-        a = moveStick.dir;
+        //a = moveStick.dir;
         if(red > maxRed) red = maxRed;
         if(green > maxGreen) green = maxGreen;
         if(blue > maxBlue) blue = maxBlue;

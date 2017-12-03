@@ -1,5 +1,6 @@
 package com.lancer.game.gobjects;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.EarClippingTriangulator;
@@ -35,10 +36,13 @@ public class Fireball extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-        if(another.tag == "Entity"){
+        if(another.tag == "Entity" && another.name!="Player"){
             Entity e = (Entity) another;
             e.damage(damage);
+
+           Gdx.app.log("hui12312",""+e.toString());
             this.dispose();
+            this.kill();
         }
     }
 

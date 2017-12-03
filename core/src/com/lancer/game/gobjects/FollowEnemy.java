@@ -25,7 +25,9 @@ public class FollowEnemy extends Entity {
     public FollowEnemy(float x, float y, float width, float height, Room room) {//наверное можно сделать конструктор получше но я был сонный если что поправь
         this.room = room;
         //свойства
+        this.godTime=0;
         this.x = x;
+        name="Suka";
         this.y = y;
         tag="Entity";
         this.height = height;
@@ -46,6 +48,7 @@ public class FollowEnemy extends Entity {
     @Override
     public void update() {
         super.update();
+        Gdx.app.log("hui",""+health);
         //Gdx.app.log("You are DIE",""+ health);//ахуенно ебанутый алгоритм движения ебанутого врага лучше его исправить это алгоритм на сккорую руку хуюку
         if (Math.sqrt((player.x - x) * (player.x - x) + (player.y - y) * (player.y - y)) <= 100) {
             a = new Vector2(player.x - x, player.y - y);

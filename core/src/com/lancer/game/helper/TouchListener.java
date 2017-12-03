@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObject;
+import com.lancer.game.gobjects.Player;
 import com.lancer.game.gobjects.Stick;
 
 import java.util.List;
@@ -15,9 +16,13 @@ import java.util.List;
 public class TouchListener implements InputProcessor{
 
     public List<GameObject> inputs;
+    Vector2 vector;
+    int firstX;
+    int firstY;
+    Player player;
+    public TouchListener(Player player){
+        this.player=player;
 
-    public TouchListener(List<GameObject> sticks){
-        this.inputs =sticks;
     }
 
     @Override
@@ -38,52 +43,23 @@ public class TouchListener implements InputProcessor{
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 
-        for(int i = 0; i<this.inputs.size(); i++)
-        {
-            if(inputs.get(i).name == "Stick")
-            {
-                Stick s = (Stick) inputs.get(i);
-                if( Math.sqrt((screenX-s.cX)*(screenX-s.cX)+(Gdx.graphics.getHeight()-screenY-s.cY)*(Gdx.graphics.getHeight()-screenY-s.cY))<=s.r){
-                    s.pointer = pointer;
-                }
-            }
-        }
-        return false;
+      int firstx=screenX;
+      int firsty=Gdx.graphics.getHeight()-screenY;
+      return false;
     }
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 
-        for(int i = 0; i<this.inputs.size(); i++)
-        {
-            if(inputs.get(i).name=="Stick")
-            {
-                Stick s= (Stick) inputs.get(i);
-                if(s.pointer==pointer)
-                {
-                    s.end();
-                    s.pointer=-1;
-                    s.dir=new Vector2(0,0);
-                }
-            }
-        }
+     vector=new Vector2(screenX-firstX,Gdx.graphics.getHeight()-screenY-firstY);
+     vector.setLength(vector.len()/30);
+     player.addForce(vector);
         return false;
     }
 
     @Override
     public boolean touchDragged(int screenX, int screenY, int pointer) {
-        for(int i = 0; i<this.inputs.size(); i++)
-        {
-            if(inputs.get(i).name=="Stick")
-            {
-                Stick s= (Stick) inputs.get(i);
-                if(s.pointer==pointer)
-                {
-                    s.dir=new Vector2(screenX-s.cX,Gdx.graphics.getHeight()-screenY-s.cY);
-                }
-            }
-        }
-        return false;
+      return false;
     }
 
     @Override
