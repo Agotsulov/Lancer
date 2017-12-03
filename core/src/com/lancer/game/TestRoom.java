@@ -59,10 +59,14 @@ class TestRoom extends Room {
         add(health);
 
         overlap(p,s);
+        overlap(one,s);
         add(s);
         overlap(p,s1);
+        overlap(one,s1);
         add(s1);
+
         overlap(p,s2);
+        overlap(one,s2);
         add(s2);
         overlap(p,one);
         add(one);

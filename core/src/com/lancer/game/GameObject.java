@@ -187,6 +187,7 @@ public abstract class GameObject {
         return layer;
     }
 
+
     @Override
     public String toString() {
         return "GameObject{" +
