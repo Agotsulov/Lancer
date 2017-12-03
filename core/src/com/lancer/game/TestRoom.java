@@ -1,8 +1,7 @@
 package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
-import com.lancer.game.GameObjects.Block;
-import com.lancer.game.gobjects.Blue;
+import com.lancer.game.gobjects.Block;
 import com.lancer.game.gobjects.Deep;
 import com.lancer.game.gobjects.Fireblock;
 import com.lancer.game.gobjects.FollowEnemy;
@@ -41,14 +40,47 @@ class TestRoom extends Room {
         */
         Player p = new Player(this);
         add(p);
+
+
+
         List<GameObject> b = new ArrayList<GameObject>();
-
-        //add(new Block(350,130,100,100));
-
-        for(int i = 0;i < 3;i++){
-            b.add(new Block(i*100, Gdx.graphics.getHeight() - 50,100,100));
+        for(int i = 0;i < 7;i++){
+            for(int j = 0;j < 7;j++){
+                b.add(new Block(80 + i*80,80 + j*80,80,80,"floor.png"));
+            }
         }
+        add(b);
 
+
+        List<GameObject> wL = new ArrayList<GameObject>();
+        for(int i = 0;i < 9;i++){
+            wL.add(new Block(0,i*80,80,80,"wall.png"));
+        }
+        add(wL);
+
+
+        List<GameObject> wU = new ArrayList<GameObject>();
+        for(int i = 0;i < 9;i++){
+            wU.add(new Block(i*80,640,80,80,"wall.png"));
+        }
+        add(wU);
+
+        List<GameObject> wR = new ArrayList<GameObject>();
+        for(int i = 0;i < 9;i++){
+            wR.add(new Block(640,i*80,80,80,"wall.png"));
+        }
+        add(wR);
+
+        List<GameObject> wD = new ArrayList<GameObject>();
+        for(int i = 0;i < 9;i++){
+            wD.add(new Block(i*80,0,80,80,"wall.png"));
+        }
+        add(wD);
+
+
+
+
+        /*
         collide(p,b);
         FollowEnemy one=new FollowEnemy(200,130,40,40,this);
         Deep s= new Deep(350,130,100,100);
@@ -79,7 +111,7 @@ class TestRoom extends Room {
         add(fs);
 
         overlap(p,fs);
-
+        */
         /*
         List<GameObject> fs = new ArrayList<GameObject>();
         for(int i = 0;i < 5;i++){

@@ -43,9 +43,9 @@ public class TouchListener implements InputProcessor{
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
 
-      int firstx=screenX;
-      int firsty=Gdx.graphics.getHeight()-screenY;
-      return false;
+        firstX=screenX;
+        firstY=Gdx.graphics.getHeight()-screenY;
+        return false;
     }
 
     @Override
