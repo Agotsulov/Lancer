@@ -1,6 +1,7 @@
 package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
+import com.lancer.game.gobjects.Player;
 import com.lancer.game.helper.Pair;
 
 import java.util.ArrayList;
@@ -26,21 +27,21 @@ public class Room extends ArrayList<GameObject> {
         }
     }
 
-    @Override
-    public boolean add(GameObject o) {
-        layers[o.layer].add(o);
-        return super.add(o);
-    }
+   // @Override
+   // public boolean add(GameObject o) {
+     //   layers[o.layer].add(o);
+     //   return super.add(o);
+   // }
 
     public void add(List<GameObject> o) {
         for(int i = 0;i < o.size();i++){
-            add(o.get(i));
+                add(o.get(i));
         }
     }
 
 
     public void collide(GameObject g,GameObject c){
-        g.collide.add(c);
+        collide.add(new Pair<GameObject,GameObject>(g,c));
     }
 
     public void collide(GameObject g,List<GameObject> c){
@@ -51,7 +52,7 @@ public class Room extends ArrayList<GameObject> {
 
 
     public void overlap(GameObject g,GameObject c){
-        g.overlap.add(c);
+        overlap.add(new Pair<GameObject,GameObject>(g,c));
     }
 
     public void overlap(GameObject g,List<GameObject> c){
@@ -76,8 +77,26 @@ public class Room extends ArrayList<GameObject> {
     }
 
     public void remove(GameObject o){
-        layers[o.layer].remove(o);
+       layers[o.layer].remove(o);
         o.dispose();
         super.remove(o);
+   }
+   @Override
+   public  boolean add(GameObject o) {
+       layers[o.layer].add(o);
+       return super.add(o);
+   }
+
+    public void add(int array[][],List<GameObject> gameobjects){
+        for(int i=0;i<9;i++)
+        {
+            for(int j=0;j<9;j++)
+            {
+            add(gameobjects.get(array[i][j]));
+            }
+        }
+    }
+    public void init() {
+
     }
 }

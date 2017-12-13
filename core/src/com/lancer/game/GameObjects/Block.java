@@ -19,7 +19,11 @@ public class Block extends GameObject{
         texture = new Texture("badlogic.jpg");
         name = "Block";
     }
-
+    public Block(float x, float y, float width, float height,String s) {
+        super(x, y, width, height);
+        this.texture=new Texture(s+".png");
+        name = "Block";
+    }
 
     @Override
     public void update() {

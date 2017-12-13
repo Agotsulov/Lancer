@@ -16,8 +16,8 @@ public abstract class GameObject {
     public float x, y;
     public float width,height;
 
-    public List<GameObject>  collide = new ArrayList<GameObject>();
-    public List<GameObject>  overlap = new ArrayList<GameObject>();
+   // public List<GameObject>  collide = new ArrayList<GameObject>();
+   // public List<GameObject>  overlap = new ArrayList<GameObject>();
 
     public boolean isAlive = true;
     public boolean isVisible = true;
@@ -64,7 +64,7 @@ public abstract class GameObject {
         u = new Vector2(0,0);
         a = new Vector2(0,0);
         maxVelocity = 10f;
-        mass = 0.4f;
+        mass = 1f;
     }
 
     public void fixedUpdate(){
@@ -72,10 +72,12 @@ public abstract class GameObject {
     }
 
     public void update(){
+
         if((a.len() == 0) && (u.len() != 0)){
             if((u.len() > 0) && (u.len() - mass > 0)){
 
-                u.setLength(u.len() - mass);
+
+               u.setLength(u.len() - mass);
             } else u.setLength(0);
         }
     }
@@ -186,6 +188,10 @@ public abstract class GameObject {
     public int getLayer() {
         return layer;
     }
+public void start()
+{
+
+}
 
 
     @Override
@@ -204,8 +210,8 @@ public abstract class GameObject {
     }
 
     public void dispose(){
-        collide = null;
-        overlap = null;
+     //   collide = null;
+      //  overlap = null;
     }
 
     public void kill(){

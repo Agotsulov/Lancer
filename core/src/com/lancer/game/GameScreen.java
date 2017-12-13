@@ -4,6 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
+import com.lancer.game.gobjects.Block;
+import com.lancer.game.gobjects.Player;
 import com.lancer.game.helper.Camera;
 import com.lancer.game.helper.Pair;
 import com.lancer.game.helper.TouchListener;
@@ -15,25 +17,34 @@ import java.util.List;
  * Created by byzilio on 28.11.17.
  */
 
-public class GameScreen  implements Screen{
+public  class GameScreen   implements Screen{
 
-    public static float scale = 1.f;
+    //public static float scale = 1.f;
 
-    public int seed;
+   // public int seed;
 
-    Camera camera;
+    public  static Camera camera;
 
-    TouchListener touchListener;
+    //TouchListener touchListener;
 
 
-    public static Room curRoom;
-    public Room map[][];
+    public  static Room curRoom;
+    public static ArrayList<GameObject> save;
 
     @Override
     public void show() {
 
+        save=new ArrayList<GameObject>();
         camera = new Camera();
-        curRoom = new TestRoom();
+        Add(new Player(curRoom));
+
+        curRoom = new Village();
+        curRoom.init();
+        for(int i=0;i<curRoom.size();i++)
+        {
+            curRoom.get(i).start();
+        }
+
        // touchListener=new TouchListener(curRoom.layers[9]);
         //Gdx.input.setInputProcessor(touchListener);
 
@@ -41,6 +52,7 @@ public class GameScreen  implements Screen{
 
     @Override
     public void render(float delta) {
+
         update();
         draw();
     }
@@ -55,20 +67,25 @@ public class GameScreen  implements Screen{
         for(int i = 0; i < curRoom.size(); i++){
             if(curRoom.get(i).isAlive) curRoom.get(i).moveX();
         }
+        for(int i = 0; i < save.size(); i++){
+            if(save.get(i).isAlive) save.get(i).fixedUpdate();
+        }
+        for(int i = 0; i < save.size(); i++){
+            if(save.get(i).isAlive) save.get(i).moveX();
+        }
 
 
-        for(int i = 0; i < curRoom.size(); i++){
-            GameObject f = curRoom.get(i);
 
-            for(int j = 0;j < f.collide.size();j++) {
+            for(int j = 0;j < curRoom.collide.size();j++) {
 
-                GameObject s = f.collide.get(j);
+                GameObject f = curRoom.collide.get(j).getFirst();
+                GameObject s = curRoom.collide.get(j).getSecond();
                 if(f.overlaps(s) && f.isAlive && s.isAlive){
                     encountered.add(new Pair<GameObject,GameObject>(f, s));
                     f.repelX(s);
                 }
             }
-        }
+
 
         /*
         for(int i = 0; i < curRoom.size(); i++){
@@ -88,30 +105,30 @@ public class GameScreen  implements Screen{
         for(int i = 0; i < curRoom.size(); i++){
             if(curRoom.get(i).isAlive) curRoom.get(i).moveY();
         }
+        for(int i = 0; i < save.size(); i++){
+            if(save.get(i).isAlive) save.get(i).moveY();
+        }
+        for(int j = 0;j < curRoom.collide.size();j++) {
 
-
-        for(int i = 0; i < curRoom.size(); i++){
-            GameObject f = curRoom.get(i);
-            for(int j = 0;j < f.collide.size();j++) {
-                GameObject s = f.collide.get(j);
-                if(f.overlaps(s) && f.isAlive && s.isAlive){
-                    encountered.add(new Pair<GameObject,GameObject>(f, s));
-                    f.repelY(s);
-                }
+            GameObject f = curRoom.collide.get(j).getFirst();
+            GameObject s = curRoom.collide.get(j).getSecond();
+            if(f.overlaps(s) && f.isAlive && s.isAlive){
+                encountered.add(new Pair<GameObject,GameObject>(f, s));
+                f.repelY(s);
             }
         }
 
 
-        for(int i = 0; i < curRoom.size(); i++){
-            GameObject f = curRoom.get(i);
+        for(int j = 0;j < curRoom.overlap.size();j++) {
 
-            for(int j = 0;j < f.overlap.size();j++) {
-                GameObject s = f.overlap.get(j);
-                if(f.overlaps(s) && f.isAlive && s.isAlive){
-                    encountered.add(new Pair<GameObject,GameObject>(f, s));
-                }
+            GameObject f = curRoom.overlap.get(j).getFirst();
+            GameObject s = curRoom.overlap.get(j).getSecond();
+            if(f.overlaps(s) && f.isAlive && s.isAlive){
+                encountered.add(new Pair<GameObject,GameObject>(f, s));
+
             }
         }
+
         /*
         for(int i = 0; i < curRoom.size(); i++){
             GameObject current = curRoom.get(i);
@@ -164,7 +181,10 @@ public class GameScreen  implements Screen{
     public void resize(int width, int height) {
 
     }
-
+    public static void Add(GameObject object)
+    {
+        save.add(object);
+    }
     @Override
     public void pause() {
 
@@ -185,6 +205,41 @@ public class GameScreen  implements Screen{
         curRoom.dispose();
         camera.dispose();
     }
+    public static boolean add(GameObject o) {
+        curRoom.layers[o.layer].add(o);
+       return curRoom.add(o);
+   }
 
+    public static void add(List<GameObject> o) {
+        for(int i = 0;i < o.size();i++){
+            GameScreen.add(o.get(i));
+        }
+    }
+    public static void remove(GameObject o){
+        curRoom.layers[o.layer].remove(o);
+        o.dispose();
+        curRoom.remove(o);
+   }
+   public static GameObject find(String s){
+        GameObject result;
+
+        for(int i=0;i<curRoom.size();i++)
+        {
+            if(curRoom.get(i).name==s){
+
+               return curRoom.get(i);
+
+            }
+        }
+       for(int i=0;i<save.size();i++)
+       {
+           if(save.get(i).name==s){
+
+               return save.get(i);
+
+           }
+       }
+        return null;
+   }
 
 }

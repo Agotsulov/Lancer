@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lancer.game.GameObject;
+import com.lancer.game.GameScreen;
 import com.lancer.game.Room;
 import com.lancer.game.gobjects.sticks.FireWeaponStick;
 import com.lancer.game.gobjects.sticks.MoveStick;
@@ -28,7 +29,8 @@ public class Player extends Entity{
     public int maxRed = 10;
     public int maxGreen = 10;
     public int maxBlue = 10;
-
+    public int coord_room_x=4;
+    public int coord_room_y=4;
     Health t;
     Texture texture;
 
@@ -40,21 +42,24 @@ public class Player extends Entity{
         tag = "Entity";
         this.room = room;
         mass = 1;
+
         x = 300;
         y = 300;
         width = 50;
         height = 50;
         name = "Player";
         texture = new Texture("player.png");
-        maxVelocity = 20;
+        maxVelocity = 7;
         layer = 3;
         health=100;
-        Gdx.input.setInputProcessor(new TouchListener(this));
+
+        Gdx.input.setInputProcessor(new TouchListener());
         //moveStick = new MoveStick(30,30,100,this);
         //fireStick = new FireWeaponStick(400,300,40,this);
       //  room.add(moveStick);
         //room.add(fireStick);
         t = new Health(this);
+        GameScreen.Add(this);
     }
 
     @Override

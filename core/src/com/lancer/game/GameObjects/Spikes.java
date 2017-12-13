@@ -17,6 +17,7 @@ public class Spikes extends Entity {
         super(x, y, width, height);
         texture = new Texture("badlogic.jpg");
         name = "Spikes";
+
     }
 
 
