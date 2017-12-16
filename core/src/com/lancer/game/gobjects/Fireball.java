@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObject;
+import com.lancer.game.GameScreen;
 
 /**
  * Created by byzilio on 02.12.17.
@@ -19,8 +20,10 @@ public class Fireball extends GameObject {
     public Fireball(float x, float y, Vector2 dir,int damage){
         this.x = x;
         this.y = y;
-        width = 10;
-        height = 10;
+        width = 20;
+        height = 20;
+layer=9;
+
         name="Fireball";
         maxVelocity = 5;
         u = dir;
@@ -36,18 +39,23 @@ public class Fireball extends GameObject {
 
     @Override
     public void collide(GameObject another) {
-        if(another.tag == "Entity" && another.name!="Player"){
+        if(another.name=="Player" ){
             Entity e = (Entity) another;
+         //  GameScreen.curRoom.remove(this);
+            this.x=-1000;
+            this.y=-1000;
             e.damage(damage);
+            //GameScreen.curRoom.collide.remove();
+           Gdx.app.log("hui12312",""+e.health);
 
-           Gdx.app.log("hui12312",""+e.toString());
-            this.dispose();
-            this.kill();
+          //  this.kill();
+            //this.dispose();
         }
     }
 
     @Override
     public void dispose() {
+        GameScreen.remove(this);
 
     }
 }

@@ -19,6 +19,7 @@ public class Block extends GameObject {
         this.width = w;
         this.height = h;
         texture = new Texture(filename);
+        layer=0;
     }
 
     @Override

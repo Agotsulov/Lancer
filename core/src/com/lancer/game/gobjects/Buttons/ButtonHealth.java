@@ -1,7 +1,6 @@
-package com.lancer.game.gobjects;
+package com.lancer.game.gobjects.Buttons;
 
 import com.badlogic.gdx.Gdx;
-import com.lancer.game.helper.ButtonListener;
 
 /**
  * Created by zope on 13.12.2017.

@@ -13,8 +13,8 @@ import com.lancer.game.gobjects.Entity;
 public class Spikes extends Entity {
     Texture texture;
 
-    public Spikes(float x, float y, float width, float height) {
-        super(x, y, width, height);
+    public Spikes(float x, float y, float width, float height,String filename) {
+        super(x, y, width, height,filename);
         texture = new Texture("badlogic.jpg");
         name = "Spikes";
 

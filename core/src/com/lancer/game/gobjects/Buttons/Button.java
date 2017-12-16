@@ -1,4 +1,4 @@
-package com.lancer.game.gobjects;
+package com.lancer.game.gobjects.Buttons;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

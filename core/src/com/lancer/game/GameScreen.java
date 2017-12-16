@@ -3,12 +3,10 @@ package com.lancer.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.scenes.scene2d.InputListener;
-import com.lancer.game.gobjects.Block;
-import com.lancer.game.gobjects.Player;
+//import com.lancer.game.gobjects.ButtonPaladin;
+//import com.lancer.game.gobjects.Warrior;
 import com.lancer.game.helper.Camera;
 import com.lancer.game.helper.Pair;
-import com.lancer.game.helper.TouchListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,10 +34,12 @@ public  class GameScreen   implements Screen{
 
         save=new ArrayList<GameObject>();
         camera = new Camera();
-        Add(new Player(curRoom));
 
         curRoom = new Village();
         curRoom.init();
+       curRoom.Resize();
+      //  Add(new ButtonPaladin(curRoom));
+       // Add(new Warrior(curRoom));
         for(int i=0;i<curRoom.size();i++)
         {
             curRoom.get(i).start();
@@ -76,11 +76,12 @@ public  class GameScreen   implements Screen{
 
 
 
+
             for(int j = 0;j < curRoom.collide.size();j++) {
 
                 GameObject f = curRoom.collide.get(j).getFirst();
                 GameObject s = curRoom.collide.get(j).getSecond();
-                if(f.overlaps(s) && f.isAlive && s.isAlive){
+                if(f.overlaps(s) ){
                     encountered.add(new Pair<GameObject,GameObject>(f, s));
                     f.repelX(s);
                 }
@@ -112,7 +113,7 @@ public  class GameScreen   implements Screen{
 
             GameObject f = curRoom.collide.get(j).getFirst();
             GameObject s = curRoom.collide.get(j).getSecond();
-            if(f.overlaps(s) && f.isAlive && s.isAlive){
+            if(f.overlaps(s)){
                 encountered.add(new Pair<GameObject,GameObject>(f, s));
                 f.repelY(s);
             }
@@ -143,6 +144,9 @@ public  class GameScreen   implements Screen{
             }
         }
         */
+        for(int i=0;i<GameScreen.save.size();i++) {
+            GameScreen.save.get(i).update();
+        }
         for(int i = 0; i < curRoom.size(); i++){
             if(curRoom.get(i).isAlive) curRoom.get(i).update();
         }
@@ -217,7 +221,7 @@ public  class GameScreen   implements Screen{
     }
     public static void remove(GameObject o){
         curRoom.layers[o.layer].remove(o);
-        o.dispose();
+     //   o.dispose();
         curRoom.remove(o);
    }
    public static GameObject find(String s){

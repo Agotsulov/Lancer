@@ -2,12 +2,8 @@ package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
 import com.lancer.game.gobjects.Block;
-import com.lancer.game.gobjects.Door;
-import com.lancer.game.gobjects.FollowEnemy;
-import com.lancer.game.gobjects.Player;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.lancer.game.gobjects.FireEye;
+import com.lancer.game.helper.OtherFunctions;
 
 
 /**
@@ -16,95 +12,30 @@ import java.util.List;
 
 public class NextRoom extends Room {
     public NextRoom() {
-
+        name="NextRoom";
     }
+
     @Override
-    public void init () {
-        Player p = new Player(this);
-
-       // Door rightdoor=new Door(Gdx.graphics.getWidth()/2+100,(Gdx.graphics.getHeight()-720)/2,40,40,null);
-        //Door cur=new Door(Gdx.graphics.getWidth()/2,(Gdx.graphics.getHeight()-720)/2,40,40,rightdoor);
-        add(p);
-        int array[][] = new int[9][9];
-        //  FileHandle handle = Gdx.files.external("myfile.txt");
-      /*  FileHandle handle=Gdx.files.internal("B:/loid/test2/Lancer/android/assets/file.txt");
-
-
-               String [] m =(handle.readString().split("\n"));
-
-            for(int j=0;j<m.length;j++){
-                String [] m1=(m[j].split(" "));
-                Gdx.app.log("ssss",""+m1[0]);
-                for(int k=0;k<m1.length;k++){
-                    array[j][k]=Integer.parseInt(m1[k]);
-
-                }
-            }
-*/
-
-
-        //array=
-        List<GameObject> b = new ArrayList<GameObject>();
-        b.add(new FollowEnemy(0, 0, 30, 30));
-      //  b.add(rightdoor);
-       // b.add(cur);
-        //  b.add(new Fireblock(0,0,80,80));
-        add(array, b);
-        // Gdx.app.log("size", "" + ((float) (Gdx.graphics.getWidth()) / 720) * (float) (80));
-
-        float sizex = 80;
-        float sizey =  80;
-        Gdx.app.log("sos",""+sizex);
-        for (int i = 0; i < 7; i++) {
-            for (int j = 0; j < 7; j++) {
-                Block t=new Block(sizex + j * sizex, sizey + (float) (i * sizey), sizex, sizey, "floor.png");
-                b.add(t);
-
+    public void init() {
+      float scale = OtherFunctions.min((float)Gdx.graphics.getWidth()/720,(float)Gdx.graphics.getHeight()/720);
+        for (int j = 1; j < 10; j++) {
+            for (int i = 0; i < GameScreen.curRoom.layers[j].size(); i++) {
+                GameScreen.curRoom.layers[j].get(i).width = scale;
+                GameScreen.curRoom.layers[j].get(i).height *= scale;
             }
         }
-        add(b);
-
-
-        List<GameObject> wL = new ArrayList<GameObject>();
-        for (int i = 0; i < 9; i++) {
-            Block d=new Block(0, i * sizey, sizex, sizey, "wall.png");
-            wL.add(d);
-            collide(p,d);
+        for(int i=0;i< GameScreen.save.size();i++) {
+            GameScreen.save.get(i).width *= scale;
+            GameScreen.save.get(i).height *= scale;
         }
-        add(wL);
+        Block block=new Block(0,0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),"daunroom.png");
+        add(block);
+        FireEye eye=new FireEye(0,0,50,50,"enemy.png",5);
 
-
-        List<GameObject> wU = new ArrayList<GameObject>();
-        for (int i = 0; i < 9; i++) {
-            Block d=new Block(i * sizex, 8 * sizey, sizex, sizey, "wall.png");
-            collide(p,d);
-            wU.add(new Block(i * sizex, 8 * sizey, sizex, sizey, "wall.png"));
-
-
-        }
-        add(wU);
-
-        List<GameObject> wR = new ArrayList<GameObject>();
-        for (int i = 0; i < 9; i++) {
-            Block d=new Block(8 * sizex, i * sizey, sizex, sizey, "wall.png");
-            collide(p,d);
-            wR.add(new Block(8 * sizex, i * sizey, sizex, sizey, "wall.png"));
-        }
-        add(wR);
-
-        List<GameObject> wD = new ArrayList<GameObject>();
-        for (int i = 0; i < 9; i++) {
-            Block d=new Block(i * sizex, 0, sizex, sizey, "wall.png");
-            collide(p,d);
-            wD.add(new Block(i * sizex, 0, sizex, sizey, "wall.png"));
-        }
-        add(wD);
-
-
-
+        FireEye eye1=new FireEye(eye.x+eye.width+100,0,50,50,"enemy.png",5);
+        add(eye);
+        add(eye1);
     }
-
-
 }
 
 
@@ -166,6 +97,87 @@ public class NextRoom extends Room {
         for(int i = 0;i < 100;i++){
             add(new Block(Gdx.graphics.getWidth() - 50,i*100,100,100));
         }
+            Player p = new Player(this);
+
+       // Door rightdoor=new Door(Gdx.graphics.getWidth()/2+100,(Gdx.graphics.getHeight()-720)/2,40,40,null);
+        //Door cur=new Door(Gdx.graphics.getWidth()/2,(Gdx.graphics.getHeight()-720)/2,40,40,rightdoor);
+        add(p);
+        int array[][] = new int[9][9];
+        //  FileHandle handle = Gdx.files.external("myfile.txt");
+      /*  FileHandle handle=Gdx.files.internal("B:/loid/test2/Lancer/android/assets/file.txt");
+
+
+               String [] m =(handle.readString().split("\n"));
+
+            for(int j=0;j<m.length;j++){
+                String [] m1=(m[j].split(" "));
+                Gdx.app.log("ssss",""+m1[0]);
+                for(int k=0;k<m1.length;k++){
+                    array[j][k]=Integer.parseInt(m1[k]);
+
+                }
+            }
+*/
+
+
+    //array=
+    /*
+    List<GameObject> b = new ArrayList<GameObject>();
+        b.add(new FollowEnemy(0, 0, 30, 30));
+                //  b.add(rightdoor);
+                // b.add(cur);
+                //  b.add(new Fireblock(0,0,80,80));
+                add(array, b);
+                // Gdx.app.log("size", "" + ((float) (Gdx.graphics.getWidth()) / 720) * (float) (80));
+
+                float sizex = 80;
+                float sizey =  80;
+                Gdx.app.log("sos",""+sizex);
+                for (int i = 0; i < 7; i++) {
+        for (int j = 0; j < 7; j++) {
+        Block t=new Block(sizex + j * sizex, sizey + (float) (i * sizey), sizex, sizey, "floor.png");
+        b.add(t);
+
+        }
+        }
+        add(b);
+
+
+        List<GameObject> wL = new ArrayList<GameObject>();
+        for (int i = 0; i < 9; i++) {
+        Block d=new Block(0, i * sizey, sizex, sizey, "wall.png");
+        wL.add(d);
+        collide(p,d);
+        }
+        add(wL);
+
+
+        List<GameObject> wU = new ArrayList<GameObject>();
+        for (int i = 0; i < 9; i++) {
+        Block d=new Block(i * sizex, 8 * sizey, sizex, sizey, "wall.png");
+        collide(p,d);
+        wU.add(new Block(i * sizex, 8 * sizey, sizex, sizey, "wall.png"));
+
+
+        }
+        add(wU);
+
+        List<GameObject> wR = new ArrayList<GameObject>();
+        for (int i = 0; i < 9; i++) {
+        Block d=new Block(8 * sizex, i * sizey, sizex, sizey, "wall.png");
+        collide(p,d);
+        wR.add(new Block(8 * sizex, i * sizey, sizex, sizey, "wall.png"));
+        }
+        add(wR);
+
+        List<GameObject> wD = new ArrayList<GameObject>();
+        for (int i = 0; i < 9; i++) {
+        Block d=new Block(i * sizex, 0, sizex, sizey, "wall.png");
+        collide(p,d);
+        wD.add(new Block(i * sizex, 0, sizex, sizey, "wall.png"));
+        }
+        add(wD);
+
         */
 
 

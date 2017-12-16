@@ -1,7 +1,6 @@
 package com.lancer.game.gobjects.sticks;
 
-import com.badlogic.gdx.math.Vector2;
-import com.lancer.game.gobjects.Player;
+import com.lancer.game.gobjects.Players.Player;
 import com.lancer.game.gobjects.Stick;
 
 /**

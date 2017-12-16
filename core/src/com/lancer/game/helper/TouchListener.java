@@ -5,9 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObject;
 import com.lancer.game.GameScreen;
-import com.lancer.game.gobjects.Block;
-import com.lancer.game.gobjects.Player;
-import com.lancer.game.gobjects.Stick;
+import com.lancer.game.gobjects.Players.Player;
 
 import java.util.List;
 
@@ -52,18 +50,12 @@ public class TouchListener implements InputProcessor{
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        Point point=new Point(screenX,screenY);
-        Block block=new Block(screenX,Gdx.graphics.getHeight()-screenY,1,1,"wall.png");
-        Gdx.app.log("pustrun",""+(float)block.x+" "+(float)block.y);
-        Gdx.app.log("pustrun1",""+GameScreen.find("button_health").x+" "+GameScreen.find("button_health").y);
-        Gdx.app.log("pustrun1",""+GameScreen.find("button_health").width+" "+GameScreen.find("button_health").height);
-         Gdx.app.log("pustrun2",""+ block.overlaps(GameScreen.find("button_health")));
-if(GameScreen.find("button_health") !=null && block.overlaps(GameScreen.find("button_health"))){
-Gdx.app.log("pustrun",""+2);
-}
+
+
      vector=new Vector2(screenX-firstX,Gdx.graphics.getHeight()-screenY-firstY);
      vector.setLength(vector.len()/30);
-     player.addForce(vector);
+     GameScreen.save.get(0).addForce(vector);
+     Gdx.app.log("psina",""+vector.x+" "+vector.y);
         return false;
     }
 

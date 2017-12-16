@@ -1,16 +1,11 @@
 package com.lancer.game.gobjects;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.lancer.game.GameObject;
 import com.lancer.game.GameScreen;
-import com.lancer.game.Room;
-import com.lancer.game.gobjects.sticks.FireWeaponStick;
-import com.lancer.game.gobjects.sticks.MoveStick;
-
-import static java.lang.Math.sqrt;
+import com.lancer.game.gobjects.Players.Player;
 
 /**
  * Created by zope on 03.12.2017.

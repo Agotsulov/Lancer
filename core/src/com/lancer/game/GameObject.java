@@ -7,6 +7,7 @@ package com.lancer.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.lancer.game.helper.OtherFunctions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,6 +148,11 @@ public abstract class GameObject {
                 y = another.y + another.height;
                 contact = UP;
             }
+    }
+    public void Resize(){
+        float scale = OtherFunctions.min((float) Gdx.graphics.getWidth()/720,(float)Gdx.graphics.getHeight()/720);
+        this.width*=scale;
+        this.height*=scale;
     }
 
     public abstract void draw(SpriteBatch batch);

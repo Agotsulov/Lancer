@@ -1,7 +1,7 @@
 package com.lancer.game.gobjects.sticks;
 
 import com.lancer.game.gobjects.Fireball;
-import com.lancer.game.gobjects.Player;
+import com.lancer.game.gobjects.Players.Player;
 import com.lancer.game.gobjects.Stick;
 
 /**

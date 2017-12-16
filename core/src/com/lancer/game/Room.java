@@ -1,7 +1,7 @@
 package com.lancer.game;
 
 import com.badlogic.gdx.Gdx;
-import com.lancer.game.gobjects.Player;
+import com.lancer.game.helper.OtherFunctions;
 import com.lancer.game.helper.Pair;
 
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ public class Room extends ArrayList<GameObject> {
     public List<Pair<GameObject,GameObject>> collide = new ArrayList<Pair<GameObject, GameObject>>();
     public List<Pair<GameObject,GameObject>> overlap = new ArrayList<Pair<GameObject, GameObject>>();
 
-
+public String name;
     public Room(){
         layers = new ArrayList[COUNT_LAYERS];
         for(int i = 0;i < COUNT_LAYERS;i++){
@@ -77,10 +77,12 @@ public class Room extends ArrayList<GameObject> {
     }
 
     public void remove(GameObject o){
-       layers[o.layer].remove(o);
-        o.dispose();
-        super.remove(o);
+        o=null;
+     //  layers[o.layer].remove(o);
+       // o.dispose();
+       // super.remove(o);
    }
+
    @Override
    public  boolean add(GameObject o) {
        layers[o.layer].add(o);
@@ -98,5 +100,13 @@ public class Room extends ArrayList<GameObject> {
     }
     public void init() {
 
+    }
+    public void Resize(){
+
+        for(int i=0;i<this.size();i++)
+        {
+            if(this.get(i).layer!=0)
+            this.get(i).Resize();
+        }
     }
 }

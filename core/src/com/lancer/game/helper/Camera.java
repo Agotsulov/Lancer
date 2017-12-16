@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lancer.game.GameObject;
+import com.lancer.game.GameScreen;
 import com.lancer.game.Room;
 
 
@@ -25,6 +26,7 @@ public class Camera extends SpriteBatch {
 
         x = 0;
         y = 0;
+
     }
 
     public Camera(float x,float y){
@@ -35,7 +37,7 @@ public class Camera extends SpriteBatch {
 
     public void draw(Texture texture, float x, float y, float width, float height){
 
-        super.draw(texture, ((x - this.x) * scale), (int) ((y - this.y) * scale),width * scale,height * scale);
+        super.draw(texture, ((x - this.x) ), (int) ((y - this.y) ),width,height );
 
 
     }
@@ -43,9 +45,15 @@ public class Camera extends SpriteBatch {
     public void render(Room room){
         for (int j = 0; j < 10; j++) {
             for (int i = 0; i < room.layers[j].size(); i++) {
+
                 if(room.layers[j].get(i).isVisible) room.layers[j].get(i).draw(this);
                // Gdx.app.log("sizeeee",""+room.layers[j].get(i).width);
             }
+        }
+        for(int i=0;i< GameScreen.save.size();i++)
+        {
+
+            GameScreen.save.get(i).draw(this);
         }
     }
 }

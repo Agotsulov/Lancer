@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.lancer.game.GameObject;
+import com.lancer.game.gobjects.Players.Player;
 
 /**
  * Created by zope on 03.12.2017.

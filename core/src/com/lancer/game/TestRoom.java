@@ -1,11 +1,10 @@
 package com.lancer.game;
 
-import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.lancer.game.gobjects.Block;
 import com.lancer.game.gobjects.Door;
 import com.lancer.game.gobjects.FollowEnemy;
-import com.lancer.game.gobjects.Player;
+import com.lancer.game.gobjects.Players.Player;
 
 import java.util.ArrayList;
 import java.util.List;
